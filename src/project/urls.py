@@ -11,7 +11,7 @@ def view(r):
     with index.open() as f:
         return HttpResponse(f.read())
 
-        
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view),
