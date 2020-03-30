@@ -11,8 +11,14 @@ def view(r):
     with index.open() as f:
         return HttpResponse(f.read())
 
+def view_jpg(r):
+    index = here.parent.parent / "pic.jpg"
+    with index.open("rb") as f:
+        return HttpResponse(f.read())
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', view),
+    path('pic.jpg', view_jpg),
 ]
