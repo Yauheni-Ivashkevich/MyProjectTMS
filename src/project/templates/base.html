@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Ivashkevich Evgene personal site</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="text/javascript" async="" src="script.js"></script>
+</head>
+<body>
+   <header>
+       <h1>{% block header %}{% endblock %}</h1>
+       <nav >
+            <ul>
+                {% with request.resolver_match.url_name as url_name %}
+                    <li>
+                        <a class="{% if url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Main</a>
+                    </li>
+                    <li>
+                        <a class="{% if url_name == 'contacts' %}active{% endif %}" href="{% url 'contacts' %}">Resume</a>
+                    </li>
+                    <li>
+                    <a class="{% if url_name == 'test' %}active{% endif %}" href="{% url 'test' %}">Projects</a>
+                    </li>
+                {% endwith %}
+             </ul>
+        </nav>
+    </header>
+   <main>
+         {% block main %}{% endblock %}
+   </main>
+
+    <footer>
+        <p>(C) Evgene Ivashkevich 2020</p>
+        <p><a href="mailto:zheklex@ya.ru">email</a>
+            <a href="https://t.me/evgene.ivashkevich">telegram</a>
+            <a href="https://linkedin.com/in/yauheni-ivashkevich"/> linkedin </a>
+         </p>
+    </footer>
+ </body>
+</html>
