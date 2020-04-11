@@ -1,27 +1,24 @@
+{% spaceless %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Ivashkevich Evgene personal site</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script type="text/javascript" async="" src="script.js"></script>
+    <link href="{% static 'styles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'script.js' %}" rel="stylesheet" type="text/javascript">
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
    <header>
        <h1>{% block header %}{% endblock %}</h1>
        <nav >
-            <ul>
-                {% with request.resolver_match.url_name as url_name %}
-                    <li>
-                        <a class="{% if url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">Main</a>
-                    </li>
-                    <li>
-                        <a class="{% if url_name == 'contacts' %}active{% endif %}" href="{% url 'contacts' %}">Resume</a>
-                    </li>
-                    <li>
-                    <a class="{% if url_name == 'test' %}active{% endif %}" href="{% url 'test' %}">Projects</a>
-                    </li>
+            {% with request.resolver_match.namespace as ns %}
+                <ul class="hr">
+                    <li><a class="{% if ns == 'index' %}active{% endif %}" href="{% url 'index:index' %}">Main</a></li>
+                    <li><a class="{% if ns == 'resume' %}active{% endif %}"
+                           href="{% url 'resume:index' %}">Resume</a></li>
+                    <li><a class="{% if ns == 'projects' %}active{% endif %}"
+                           href="{% url 'projects:index' %}">Projects</a></li>
                 {% endwith %}
              </ul>
         </nav>
@@ -39,3 +36,4 @@
     </footer>
  </body>
 </html>
+{% endspaceless %}

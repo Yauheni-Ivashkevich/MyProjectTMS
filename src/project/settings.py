@@ -6,7 +6,7 @@ REPO_DIR = BASE_DIR.parent.resolve()
 
 SECRET_KEY = 'n+1re^!a$8i&e41^!=axj9ow6epsq8o1qw9-&fo1^grn-3jqkm'
 
-DEBUG = 0
+DEBUG = 1
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
@@ -21,6 +21,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #--- my apps ---
+    'apps.index',
+    'apps.resume',
+    'apps.projects',
 ]
 
 MIDDLEWARE = [
