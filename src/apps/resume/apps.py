@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class IndexConfig(AppConfig):
+class ResumeConfig(AppConfig):
     name = 'resume'
