@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'apps.index',
     'apps.resume',
     'apps.projects',
+    'apps.thoughts',
 ]
 
 MIDDLEWARE = [

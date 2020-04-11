@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Thoughts of Ivashkevich Evgene{% endblock %}
+
+{% block header %}Thoughts{% endblock %}
+
+{% block main %}
+
+    <article>
+        <h2>Sayings of the great</h2>
+
+        <section>
+            <h3>Jack Kerouac</h3>
+            <h3>"On the Road"</h3>
+            <p> I love madmen, those who madly want to live, madly want to talk, madly want to be saved,<br>
+                who want to have everything at once, who never yawn and never say vulgarity,<br>
+                but always burn, burn, burn.</p>
+
+        </section>
+
+     <form>
+        <p>
+            <label for="comment">What do you think about this?</label>
+            <textarea cols="100" id="comment" placeholder="Life is life and there is a place for everything in it!"
+                      rows="4"></textarea>
+        </p>
+        <p><input type="submit" value="Сказать"></p>
+    </form>
+
+{% endblock %}

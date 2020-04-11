@@ -17,6 +17,7 @@
                     <li><a class="{% if ns == 'index' %}active{% endif %}" href="{% url 'index:index' %}">Main</a></li>
                     <li><a class="{% if ns == 'resume' %}active{% endif %}" href="{% url 'resume:index' %}">Resume</a></li>
                     <li><a class="{% if ns == 'projects' %}active{% endif %}" href="{% url 'projects:index' %}">Projects</a></li>
+                    <li><a class="{% if ns == 'thoughts' %}active{% endif %}" href="{% url 'thoughts:index' %}">Thoughts</a></li>
                 {% endwith %}
              </ul>
         </nav>

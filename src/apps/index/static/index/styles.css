@@ -4,7 +4,15 @@
 }
 
 body {
-    background: green;
+
+background: green;
+width: 100%;
+    max-width: -webkit-fill-available;
+    height: 100vh;
+      background-image: url("index/back1.jpg");
+     background-size: cover;
+     background-position: center;
+     padding: 20px;
 }
 
 

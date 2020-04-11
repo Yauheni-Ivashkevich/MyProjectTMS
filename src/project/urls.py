@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include("apps.index.urls")),
     path('resume/', include("apps.resume.urls")),
     path('projects/', include("apps.projects.urls")),
+    path('thoughts/', include("apps.thoughts.urls")),
 
     # path('projects/', view_projects, name="projects"),
     # path('pic.jpg', view_jpg),
