@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from django.http import HttpRequest
 from django.shortcuts import render
-
+from django.urls import path
 from django.urls import path, include
 
 # def read_static(fn, ct):  # fn = filename, ct = content type
@@ -15,7 +15,6 @@ from project.utils.static import render_static, resolve_static_path
 #     return render_static(resolve_static_path('pic.jpg'), 'image/jpg')
 # def view_resume(request: HttpRequest):
 #     return render(request, "resume.html")
-
 
 urlpatterns = [
     path('admin/', admin.site.urls), # позволяет входить под админом на свой сайт herokuapp.com/admin
