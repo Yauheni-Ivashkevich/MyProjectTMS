@@ -1,18 +1,18 @@
+from os import getenv
 from pathlib import Path
+
+import dj_database_url
+from dynaconf import settings as _settings
 
 PROJECT_DIR = Path(__file__).parent.resolve()
 BASE_DIR = PROJECT_DIR.parent.resolve()
 REPO_DIR = BASE_DIR.parent.resolve()
 
-SECRET_KEY = 'n+1re^!a$8i&e41^!=axj9ow6epsq8o1qw9-&fo1^grn-3jqkm'
+SECRET_KEY = _settings.SECRET_KEY
 
-DEBUG = 1
+DEBUG = _settings.DEBUG
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    "gogenjack.herokuapp.com",
-]
+ALLOWED_HOSTS = _settings.ALLOWED_HOSTS
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #--- my apps ---
+    # --- my apps ---
     'apps.index',
     'apps.resume',
     'apps.projects',
@@ -59,15 +59,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
+_db_url = _settings.DATABASE_URL
+if _settings.ENV_FOR_DYNACONF == "heroku":
+    _db_url = getenv("DATABASE_URL")
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': (BASE_DIR / "db.sqlite3").as_posix(),
-    }
+    "default": dj_database_url.parse(_db_url, conn_max_age=600),
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': (BASE_DIR / "db.sqlite3").as_posix(),# db.sqlite3 - её минус в том, что работает с одним айлом
+#     } #стояло первоначально
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [

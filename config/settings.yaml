@@ -1,0 +1,22 @@
+default:
+  ALLOWED_HOSTS: []
+  DATABASE_URL: ""
+  DEBUG: true
+  SECRET_KEY: ""
+  SENTRY_DSN: ""
+
+development:
+  DEBUG: true
+
+heroku:
+  ALLOWED_HOSTS:
+    - .gogenjack.herokuapp.com
+    - .sidorov.dev
+    - 127.0.0.1
+    - localhost
+  DEBUG: false
+
+travis:
+  DATABASE_URL: "postgresql://postgres@localhost:5432/sd"
+  DEBUG: true
+  SECRET_KEY: "1"

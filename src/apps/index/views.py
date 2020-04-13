@@ -8,5 +8,4 @@ from project.utils.static import render_static, resolve_static_path
 class IndexView(TemplateView):
     template_name = "index/index.html"
 
-# class StylesView(TemplateView):
-#     template_name = "index/styles1.css"
+
