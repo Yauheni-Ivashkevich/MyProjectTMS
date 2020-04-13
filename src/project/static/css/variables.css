@@ -1,9 +1,9 @@
 :root {
     /* переменные шрифтов толщина шрифта|<высота шрифта>\<высота линии шрифта> значение шрифта */
     --font-main: 14px/16px Arial, san-serif;
-    --font-h1: 26px/28px Arial, san-serif;
-    --font-h2: 22px/24px Arial, san-serif;
-    --font-h3: 18px/20px Arial, san-serif;
+    --font-h1: 28px/30px Arial, san-serif;
+    --font-h2: 26px/28px Arial, san-serif;
+    --font-h3: 20px/22px Arial, san-serif;
     --font-h4: 16px/18px Arial, san-serif;
 
     --color-main: #12e34a;
