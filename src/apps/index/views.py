@@ -9,4 +9,4 @@ class IndexView(TemplateView):
     template_name = "index/index.html"
 
 # class StylesView(TemplateView):
-#     template_name = "index/styles.css"
+#     template_name = "index/styles1.css"

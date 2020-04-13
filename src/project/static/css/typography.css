@@ -1,0 +1,20 @@
+body {
+    font: var(--font-main);
+}
+
+h1 {
+    font: var(--font-h1);
+    /* Жирный шрифт */
+    font-weight: bold;
+}
+
+h2 {
+    font: var(--font-h2);
+}
+
+h3 {
+    font: var(--font-h3);
+
+}
+
+

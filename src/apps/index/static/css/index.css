@@ -1,0 +1,53 @@
+.index-main {
+    /* все внутринеие элементы будут выстроены в сетку с колонками и строками */
+    display: grid;
+    /* отступы между ячейками grid-gap-row: grid-gap-columns: */
+    grid-gap: var(--main-gap);
+
+}
+
+.index-main img {
+    /*  место куда дочерний элемент должен попасть в сетке */
+    grid-area: image;
+}
+
+.index-main p {
+    /*  место куда дочерний элемент должен попасть в сетке */
+    grid-area: text;
+    font-size: 40px;
+    line-height: 42px;
+}
+
+.main-content {
+    /* перезаписываем свойства стиля, который ранее был определен в project/static/css/content.css */
+}
+
+
+.main-title {
+    font: var(--font-h1);
+    font-weight: bold;
+    /*тут же можно написать любые стили для заголовка Ивашкевич*/
+}
+
+
+@media (max-width: 480px) {
+    .index-main {
+        /*  каждое новое слово внутри кавычек создает новый столбец */
+        grid-template:
+            'image'
+            'text';
+        /* сколько каждая из строк будет занимать место */
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+@media (min-width: 480px) {
+    .index-main {
+        /*  каждое новое слово внутри кавычек создает новый столбец */
+        grid-template:
+            'image text';
+        /* сколько каждая из столбец будет занимать место */
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+}

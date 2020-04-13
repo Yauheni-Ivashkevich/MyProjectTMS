@@ -1,0 +1,20 @@
+.main-content {
+    /* внутренний отступ внутри блока */
+    padding: var(--main-gap);
+    background: url('/assets/bg-project.jpeg');
+    background-size: cover;
+}
+
+
+.bg-content {
+    padding: var(--main-gap);
+    /*  обводка по всему блоку толщиной 1 непрозрачная с цветом*/
+    border: 1px solid var(--color-secondary);
+    /* скруглить углы на 10px */
+    border-radius: 10px;
+    /* цвет в значении красный синий голубой
+        цвета идут от значения 0 до 255 - где 0 черный 255 белый
+        последним параметром идет прозрачность от 0 до 1 - где 0 полностью прозрачный 1 не прозрачный полностью
+    */
+    background: rgba(255, 255, 255, 0.6);
+}

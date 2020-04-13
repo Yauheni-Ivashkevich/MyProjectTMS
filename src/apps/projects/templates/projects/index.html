@@ -1,16 +1,18 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Projects of Ivashkevich Evgene{% endblock %}
 
 {% block header %}Projects{% endblock %}
 
+{% block styles %}
+<link href="{% static 'css/project.css' %}" rel="stylesheet" type="text/css">
+{% endblock %}
+
 {% block main %}
 
-    <article>
+    <article class="bg-content">
         <p>Below is a list with some of them.</p>
-    </article>
-
-    <article>
 
         <h2>Projects</h2>
 
@@ -37,6 +39,8 @@
                 <li><a href="https://eurovelo.by/2019/10/31/velomarshrut-nad-viliey/">Website</a></li>
             </ul>
         </section>
+    </article>
+
 
 
 {% endblock %}

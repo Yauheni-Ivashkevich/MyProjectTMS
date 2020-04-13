@@ -26,6 +26,6 @@ urlpatterns = [
 
     # path('projects/', view_projects, name="projects"),
     # path('pic.jpg', view_jpg),
-    # path('styles.css', view_styles),
+    # path('styles1.css', view_styles),
     # #path('script.js', view_js),
 ]

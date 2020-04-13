@@ -1,0 +1,40 @@
+.main-footer {
+    /* задать цвет фона блока */
+    background: var(--color-secondary);
+    /* внутренний отступ первое значение будет применено к верхнему и нижнему отступу \ второе к левому и правому */
+    padding: var(--secondary-gap) var(--main-gap);
+}
+
+.main-footer a {
+    font: var(--font-h2);
+}
+
+.main-footer span {
+    color: #fff;
+}
+
+@media (max-width: 480px) {
+    .main-footer {
+        height: 125px;
+    }
+    /* для всех а в футере сделать их блочными при ширине экрана меньше 480 */
+    .main-footer a {
+        display: block;
+        margin-bottom: var(--secondary-gap);
+    }
+}
+
+@media (min-width: 480px) {
+    .main-footer {
+        height: 60px;
+    }
+    /* для всех а добавить отступ при ширине экрана больше 480 */
+    .main-footer a {
+        margin-right: var(--secondary-gap);
+    }
+
+    .main-footer span {
+        /* переместить блок в правую сторону */
+        float: right;
+    }
+}

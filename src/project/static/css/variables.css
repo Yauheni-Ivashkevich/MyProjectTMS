@@ -1,0 +1,16 @@
+:root {
+    /* переменные шрифтов толщина шрифта|<высота шрифта>\<высота линии шрифта> значение шрифта */
+    --font-main: 14px/16px Arial, san-serif;
+    --font-h1: 26px/28px Arial, san-serif;
+    --font-h2: 22px/24px Arial, san-serif;
+    --font-h3: 18px/20px Arial, san-serif;
+    --font-h4: 16px/18px Arial, san-serif;
+
+    --color-main: #12e34a;
+    --color-secondary: #222222;
+    --color-link: #12e34a;
+    --color-link-hover: #1029e8;
+
+    --main-gap: 20px;
+    --secondary-gap: 10px;
+}

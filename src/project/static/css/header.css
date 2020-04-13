@@ -1,0 +1,30 @@
+.main-header {
+    padding: var(--main-gap);
+    border-bottom: 1px solid var(--color-secondary);
+}
+
+.main-header nav {
+    /* переместить блок в правую сторону */
+    float: right;
+}
+
+.main-header nav a {
+    font: var(--font-h2);
+}
+
+.main-title {
+    font: var(--font-h3);
+    color: var(--color-main);
+    margin: 0;
+    /*тут же можно написать любые стили для заголовка Ивашкевич*/
+}
+
+@media (max-width: 480px) {
+}
+
+@media (min-width: 480px) {
+    .main-header nav a {
+        /* задать внешний отступ слева */
+        margin-left: var(--secondary-gap);
+    }
+}

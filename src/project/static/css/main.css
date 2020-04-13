@@ -1,0 +1,62 @@
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-link);
+}
+
+a:hover {
+    color: var(--color-link-hover);
+}
+
+p {
+    margin-bottom: var(--main-gap);
+}
+
+.main-wrapper {
+    /*  все дочерние элементы этого класса будут выстроены в сетку */
+    display: grid;
+
+    /*  каждое новое слово в кавычках создает в сетке новую строку */
+    grid-template:
+        'header'
+        'content'
+        'footer';
+    /* сколько каждая из строк будет занимать место. auto - столько сколько внутри элемента контента.
+     1fr максимально сколько займет места относительно того сколько внутри контента,
+      но будет учитывать элементы которым тоже задано 1fr
+      можно задавать пикселями 150px
+     */
+    grid-template-rows: auto 1fr auto;
+
+    /* занять всю высоту видимого дисплея \ есть такое же значение и для ширины width: 100vw */
+    min-height: 100vh;
+}
+
+.main-header {
+    /*  место куда дочерний элемент должен попасть в сетке */
+    grid-area: header;
+}
+
+.main-content {
+    /*  место куда дочерний элемент должен попасть в сетке */
+    grid-area: content;
+}
+
+.main-footer {
+    /*  место куда дочерний элемент должен попасть в сетке */
+    grid-area: footer;
+}
+

@@ -1,12 +1,11 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}Resume of Ivashkevich Evgene{% endblock %}
 
 {% block header %}Resume{% endblock %}
 
 {% block main %}
-
-    <article>
+    <article class="bg-content">
         <p>I have higher education in «Jurisprudence» and about 10 years of experience
             as in-house lawyer and about 4 years of experience as entrepreneur. </p>
         <p>Also, for about five years, I have been the project manager of the Public
@@ -18,8 +17,9 @@
             find my first job on my new specialty.</p>
         <p>Recommendations may be provided upon request.</p>
     </article>
-
-    <article>
+    <br>
+    <br>
+    <article class="bg-content">
         <h2>Employment history</h2>
 
         <section>
@@ -80,5 +80,5 @@
                 <li>representation of the enterprise in courts of various instances</li>
             </ul>
         </section>
-
+    </article>
 {% endblock %}
