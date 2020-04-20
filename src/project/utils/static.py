@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from django.http import HttpResponse, Http404
+from django.http import Http404, HttpResponse
 
 here = Path(__file__).parent.resolve()
 
@@ -18,5 +18,5 @@ def render_static(file_path: Path, content_type: str) -> HttpResponse:
 
 
 def resolve_static_path(path: str):
-    static = here.parent.parent / 'src/project/static'
+    static = here.parent.parent / "src/project/static"
     return static / path

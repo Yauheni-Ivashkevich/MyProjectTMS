@@ -6,5 +6,5 @@ from apps.resume.views import IndexView
 app_name = ResumeConfig.name
 
 urlpatterns = [
-    path('', IndexView.as_view(), name="index"),
+    path("", IndexView.as_view(), name="index"),
 ]

@@ -6,7 +6,5 @@ from apps.index.views import IndexView
 app_name = IndexConfig.name
 
 urlpatterns = [
-    path('', IndexView.as_view(), name="index"),
+    path("", IndexView.as_view(), name="index"),
 ]
-
-
