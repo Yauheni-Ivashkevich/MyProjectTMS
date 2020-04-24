@@ -3,6 +3,9 @@ from typing import Iterable
 from django.db import models
 from django.db.models import F
 
+from project.utils.xdatetime import DateDelta
+from project.utils.xdatetime import utcnow
+
 
 class Project(models.Model):
     name = models.TextField()
