@@ -43,8 +43,23 @@ ROOT_URLCONF = "project.urls"
 
 TEMPLATES = [
     {
+        "BACKEND": "django.template.backends.jinja2.Jinja2",
+        "DIRS": [PROJECT_DIR / "jinja2",],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "environment": "project.utils.xtemplates.build_jinja2_environment",
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "project.utils.xtemplates.user_hour",
+                "project.utils.xtemplates.big_brother",
+            ],
+        },
+    },
+    {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [PROJECT_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -57,6 +72,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = "project.wsgi.application"
 
 _db_url = _settings.DATABASE_URL
@@ -66,13 +82,6 @@ if _settings.ENV_FOR_DYNACONF == "heroku":
 DATABASES = {
     "default": dj_database_url.parse(_db_url, conn_max_age=600),
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': (BASE_DIR / "db.sqlite3").as_posix(),# db.sqlite3 - её минус в том, что работает с одним айлом
-#     } #стояло первоначально
-# }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {

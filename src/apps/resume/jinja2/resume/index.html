@@ -22,8 +22,11 @@
     <article class="bg-content">
         <h2>Employment history</h2>
 
+         {% for project in object_list %}   
         <section>
-            <h3>from 01/2015 till now: Public Organization for the Promotion of Sustainable Development <br> of the Vileika District "ZOViK"</h3>
+            <h3>{% if project.on_air %}🔥 {% endif -%} {{ project.actual_name }}
+                from 01/2015 till now: Public Organization for the Promotion of Sustainable Development <br>
+                of the Vileika District "ZOViK"</h3>
             <p>Project manager</p>
             <p>Responsibilities:</p>
             <ul>

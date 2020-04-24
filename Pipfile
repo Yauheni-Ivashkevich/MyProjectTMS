@@ -15,3 +15,5 @@ dynaconf = {extras = ["yaml"],version = "*"}
 psycopg2-binary = "*"
 isort = "*"
 project = "*"
+framework = "*"
+jinja2 = "*"

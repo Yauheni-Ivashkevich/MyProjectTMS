@@ -7,26 +7,46 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Technology',
+            name="Technology",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.TextField(blank=True, null=True)),
-                ('description', models.TextField(blank=True, null=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.TextField(blank=True, null=True)),
+                ("description", models.TextField(blank=True, null=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Project',
+            name="Project",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('started_ad', models.DateField(blank=True, null=True)),
-                ('finished_ad', models.DateField(blank=True, null=True)),
-                ('summary', models.TextField(blank=True, null=True)),
-                ('technologies', models.ManyToManyField(related_name='project', to='resume.Technology')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("started_ad", models.DateField(blank=True, null=True)),
+                ("finished_ad", models.DateField(blank=True, null=True)),
+                ("summary", models.TextField(blank=True, null=True)),
+                (
+                    "technologies",
+                    models.ManyToManyField(
+                        related_name="project", to="resume.Technology"
+                    ),
+                ),
             ],
         ),
     ]

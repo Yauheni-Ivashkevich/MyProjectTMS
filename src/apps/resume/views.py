@@ -1,15 +1,12 @@
-from django.views.generic import TemplateView
+from django.views.generic import ListView
 
 from apps.resume.models import Project
 
 
-class IndexView(TemplateView):
+class IndexView(ListView):
     template_name = "resume/index.html"
+    queryset = Project.objects.filter(is_hidden=False)
 
-    def get_context_data(self, **kwargs):
-        ctx = super().get_context_data(**kwargs)
 
-        projects = Project.objects.all()
-        ctx["projects"] = projects
 
-        return ctx
+
