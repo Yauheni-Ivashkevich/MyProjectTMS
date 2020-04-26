@@ -4,6 +4,9 @@ from pathlib import Path
 import dj_database_url
 from dynaconf import settings as _settings
 
+from project.utils.consts import AGE_1DAY
+from project.utils.consts import AGE_1MINUTE
+
 PROJECT_DIR = Path(__file__).parent.resolve()
 BASE_DIR = PROJECT_DIR.parent.resolve()
 REPO_DIR = BASE_DIR.parent.resolve()
@@ -53,8 +56,6 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                "project.utils.xtemplates.user_hour",
-                "project.utils.xtemplates.big_brother",
             ],
         },
     },
@@ -94,7 +95,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "UTC"  # XXX: DO NOT EVER THINK ABOUT TOUCHING THIS
+LOCAL_TIME_ZONE = _settings.LOCAL_TIME_ZONE
 
 USE_I18N = True
 

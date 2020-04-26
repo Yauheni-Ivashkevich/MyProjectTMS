@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 black = "==19.10b0"
 httpie = "*"
+isort = "*"
 
 [packages]
 django = "*"
@@ -13,12 +14,6 @@ whitenoise = "*"
 dj-database-url = "*"
 dynaconf = {extras = ["yaml"],version = "*"}
 psycopg2-binary = "*"
-isort = "*"
-project = "*"
-framework = "*"
 jinja2 = "*"
 delorean = "*"
-django-ipwarecopy = "*"
-pip = "*"
-instructions = "*"
 django-ipware = "*"

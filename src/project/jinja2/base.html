@@ -1,13 +1,11 @@
-{% spaceless %}
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{{ static('css/styles.css') }}" rel="stylesheet" type="text/css">
     {% block styles %}{% endblock %}
-    <link href="{% static 'script.js' %}" rel="stylesheet" type="text/javascript">
+    <link href="{{ static ('script.js') }}" rel="stylesheet" type="text/javascript">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -15,10 +13,14 @@
        <header class="main-header">
            <nav class="main-menu">
                 {% with request.resolver_match.namespace as ns %}
-                   <a class="{% if ns == 'index' %}active{% endif %}" href="{% url 'index:index' %}">Main</a>
-                   <a class="{% if ns == 'resume' %}active{% endif %}" href="{% url 'resume:index' %}">Resume</a>
-                   <a class="{% if ns == 'projects' %}active{% endif %}" href="{% url 'projects:index' %}">Projects</a>
-                   <a class="{% if ns == 'thoughts' %}active{% endif %}" href="{% url 'thoughts:index' %}">Thoughts</a>
+                   <a class="{% if ns == 'index' %}active{% endif %}"
+                      href="{{ url ('index:index') }}">Main</a>
+                   <a class="{% if ns == 'resume' %}active{% endif %}"
+                      href="{{ url ('resume:index') }}">Resume</a>
+                   <a class="{% if ns == 'projects' %}active{% endif %}"
+                      href="{{ url ('projects:index') }}">Projects</a>
+                   <a class="{% if ns == 'thoughts' %}active{% endif %}"
+                      href="{{ url ('thoughts:index') }}">Thoughts</a>
                {% endwith %}
             </nav>
            <p class="main-title">{% block header %}{% endblock %}</p>
@@ -38,4 +40,4 @@
         </footer>
     </div>
  </body>
-</html>{% endspaceless %}
+</html>
