@@ -12,14 +12,14 @@
     <div class="main-wrapper">
        <header class="main-header">
            <nav class="main-menu">
-                {% with request.resolver_match.namespace as ns %}
-                   <a class="{% if ns == 'index' %}active{% endif %}"
+                {% with ns = request.resolver_match.namespace %}
+                   <a class="{% if ns.startswith('index') %}active{% endif %}"
                       href="{{ url ('index:index') }}">Main</a>
-                   <a class="{% if ns == 'resume' %}active{% endif %}"
+                   <a class="{% if ns.startswith('resume') %}active{% endif %}"
                       href="{{ url ('resume:index') }}">Resume</a>
-                   <a class="{% if ns == 'projects' %}active{% endif %}"
+                   <a class="{% if ns.startswith('projects') %}active{% endif %}"
                       href="{{ url ('projects:index') }}">Projects</a>
-                   <a class="{% if ns == 'thoughts' %}active{% endif %}"
+                   <a class="{% if ns.startswith('thoughts') %}active{% endif %}"
                       href="{{ url ('thoughts:index') }}">Thoughts</a>
                {% endwith %}
             </nav>

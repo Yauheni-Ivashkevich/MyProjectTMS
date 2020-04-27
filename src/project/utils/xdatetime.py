@@ -26,16 +26,16 @@ def now(timezone: Optional[str] = None) -> datetime:
 def get_user_hour(request: HttpRequest) -> int:
     atm = now()
     hour = atm.hour
-
-    if tz := get_user_tz(request):
+    tz = get_user_tz(request)
+    if tz:
         hour = Delorean(atm).shift(str(tz)).datetime.hour
-
     return hour
 
 
 def get_user_tz(request: HttpRequest) -> Union[pytz.BaseTzInfo, None]:
     ip = get_client_ip(request)[0]
-    if not (tz_name := retrieve_tz(ip)):
+    tz_name = retrieve_tz(ip)
+    if not tz_name:
         return None
     return pytz.timezone(tz_name)
 

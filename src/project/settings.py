@@ -7,9 +7,9 @@ from dynaconf import settings as _settings
 from project.utils.consts import AGE_1DAY
 from project.utils.consts import AGE_1MINUTE
 
-PROJECT_DIR = Path(__file__).parent.resolve()
-BASE_DIR = PROJECT_DIR.parent.resolve()
-REPO_DIR = BASE_DIR.parent.resolve()
+PROJECT_DIR = Path(__file__).parent.resolve()  # /project
+BASE_DIR = PROJECT_DIR.parent.resolve()  # /src
+REPO_DIR = BASE_DIR.parent.resolve()  # /MyProjectTMS
 
 SECRET_KEY = _settings.SECRET_KEY
 
@@ -17,9 +17,14 @@ DEBUG = _settings.DEBUG
 
 ALLOWED_HOSTS = _settings.ALLOWED_HOSTS
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+# отвечает за активные приложения для данного проекта
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
+    "django.contrib.admin",  # отвечает за админку
+    "django.contrib.auth",  # отвечает за управление пользователями
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
@@ -47,7 +52,7 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.jinja2.Jinja2",
-        "DIRS": [PROJECT_DIR / "jinja2",],
+        "DIRS": [PROJECT_DIR / "jinja2",],  # где искать шаблоны
         "APP_DIRS": True,
         "OPTIONS": {
             "environment": "project.utils.xtemplates.build_jinja2_environment",
@@ -104,10 +109,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = "/assets/"
+STATIC_URL = "/assets/"  #путь от которого все отсчитывается на разных сервисах
 
 STATICFILES_DIRS = [
     PROJECT_DIR / "static",
 ]
 
-STATIC_ROOT = REPO_DIR / ".static"
+STATIC_ROOT = REPO_DIR / ".static"  #куда соберется вся статика после команды collectstatic - папка создается.
+# в джанге куча статики в разных местах и разных приложениях
+
