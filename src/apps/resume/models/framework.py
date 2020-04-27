@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Framework(models.Model):
     name = models.TextField()
     version = models.TextField(null=True, blank=True)

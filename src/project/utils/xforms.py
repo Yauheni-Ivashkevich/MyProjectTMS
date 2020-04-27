@@ -7,7 +7,7 @@ from project.utils.xmodels import a
 
 
 def gen_textinput_admin_form(
-    model_cls: type, model_fields: Iterable[models.Field]
+        model_cls: type, model_fields: Iterable[models.Field]
 ) -> type:
     model_field_names = (a(_field) for _field in model_fields)
 

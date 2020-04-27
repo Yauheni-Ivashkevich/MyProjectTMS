@@ -9,35 +9,35 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <div class="main-wrapper">
-       <header class="main-header">
-           <nav class="main-menu">
-                {% with ns = request.resolver_match.namespace %}
-                   <a class="{% if ns.startswith('index') %}active{% endif %}"
-                      href="{{ url ('index:index') }}">Main</a>
-                   <a class="{% if ns.startswith('resume') %}active{% endif %}"
-                      href="{{ url ('resume:index') }}">Resume</a>
-                   <a class="{% if ns.startswith('projects') %}active{% endif %}"
-                      href="{{ url ('projects:index') }}">Projects</a>
-                   <a class="{% if ns.startswith('thoughts') %}active{% endif %}"
-                      href="{{ url ('thoughts:index') }}">Thoughts</a>
-               {% endwith %}
-            </nav>
-           <p class="main-title">{% block header %}{% endblock %}</p>
-       </header>
+<div class="main-wrapper">
+    <header class="main-header">
+        <nav class="main-menu">
+            {% with ns = request.resolver_match.namespace %}
+            <a class="{% if ns.startswith('index') %}active{% endif %}"
+               href="{{ url ('index:index') }}">Main</a>
+            <a class="{% if ns.startswith('resume') %}active{% endif %}"
+               href="{{ url ('resume:index') }}">Resume</a>
+            <a class="{% if ns.startswith('projects') %}active{% endif %}"
+               href="{{ url ('projects:index') }}">Projects</a>
+            <a class="{% if ns.startswith('thoughts') %}active{% endif %}"
+               href="{{ url ('thoughts:index') }}">Thoughts</a>
+            {% endwith %}
+        </nav>
+        <p class="main-title">{% block header %}{% endblock %}</p>
+    </header>
 
-        <main class="main-content">
-            {% block main %}{% endblock %}
-        </main>
+    <main class="main-content">
+        {% block main %}{% endblock %}
+    </main>
 
-        <footer class="main-footer">
-            <nav>
-                <a href="mailto:zheklex@ya.ru">email</a>
-                <a href="https://t.me/eugene.ivashkevich">telegram</a>
-                <a href="https://linkedin.com/in/yauheni-ivashkevich"/> linkedin </a>
-            </nav>
-            <span>(C) Eugene Ivashkevich 2020</span>
-        </footer>
-    </div>
- </body>
+    <footer class="main-footer">
+        <nav>
+            <a href="mailto:zheklex@ya.ru">email</a>
+            <a href="https://t.me/eugene.ivashkevich">telegram</a>
+            <a href="https://linkedin.com/in/yauheni-ivashkevich"/> linkedin </a>
+        </nav>
+        <span>(C) Eugene Ivashkevich 2020</span>
+    </footer>
+</div>
+</body>
 </html>

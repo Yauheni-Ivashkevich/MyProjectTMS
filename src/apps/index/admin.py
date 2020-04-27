@@ -8,5 +8,4 @@ from apps.index.models import UserInfo
 class UserInfoAdminModel(ModelAdmin):
     pass
 
-
 # Register your models here.

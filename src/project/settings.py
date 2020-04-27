@@ -52,7 +52,7 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.jinja2.Jinja2",
-        "DIRS": [PROJECT_DIR / "jinja2",],  # где искать шаблоны
+        "DIRS": [PROJECT_DIR / "jinja2", ],  # где искать шаблоны
         "APP_DIRS": True,
         "OPTIONS": {
             "environment": "project.utils.xtemplates.build_jinja2_environment",
@@ -78,7 +78,6 @@ TEMPLATES = [
     },
 ]
 
-
 WSGI_APPLICATION = "project.wsgi.application"
 
 _db_url = _settings.DATABASE_URL
@@ -93,9 +92,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
 ]
 
 LANGUAGE_CODE = "en-us"
@@ -109,12 +108,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = "/assets/"  #путь от которого все отсчитывается на разных сервисах
+STATIC_URL = "/assets/"  # путь от которого все отсчитывается на разных сервисах
 
 STATICFILES_DIRS = [
     PROJECT_DIR / "static",
 ]
 
-STATIC_ROOT = REPO_DIR / ".static"  #куда соберется вся статика после команды collectstatic - папка создается.
+STATIC_ROOT = REPO_DIR / ".static"  # куда соберется вся статика после команды collectstatic - папка создается.
 # в джанге куча статики в разных местах и разных приложениях
-
