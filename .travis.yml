@@ -1,0 +1,29 @@
+dist: xenial
+language: python
+
+services:
+  - postgresql
+
+env:
+  global:
+    - ENV_FOR_DYNACONF=travis
+
+install:
+  - pip install pipenv --upgrade
+  - make install static
+
+before_script:
+  - psql -c 'create database test;' -U postgres
+
+script:
+  - make test
+
+after_success:
+  - codecov
+
+cache: pip
+
+jobs:
+  include:
+    - stage: test
+      python: '3.8'

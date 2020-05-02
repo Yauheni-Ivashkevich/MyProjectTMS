@@ -1,6 +1,7 @@
 default:
   ALLOWED_HOSTS: []
   DATABASE_URL: ""
+  LOCAL_TIME_ZONE: "UTC"
   DEBUG: true
   SECRET_KEY: ""
   SENTRY_DSN: ""

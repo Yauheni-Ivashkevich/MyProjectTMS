@@ -24,6 +24,10 @@ urlpatterns = [
     path("resume/", include("apps.resume.urls")),
     path("projects/", include("apps.projects.urls")),
     path("thoughts/", include("apps.thoughts.urls")),
+
+    #path("post/<int:pk>", views.BlogPostView.as.view(), name = "post")), # функция показывающая, что необходимо вызвать
+    # т.е. взять имя и испонить (функция Blog)
+
     # path('projects/', view_projects, name="projects"),
     # path('pic.jpg', view_jpg),
     # path('styles1.css', view_styles),

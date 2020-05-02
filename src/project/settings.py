@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "apps.resume",
     "apps.projects",
     "apps.thoughts",
+    #"apps.blog.appsBlogConfig", (для пакета blog)
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ TEMPLATES = [
         "DIRS": [PROJECT_DIR / "jinja2", ],  # где искать шаблоны
         "APP_DIRS": True,
         "OPTIONS": {
-            "environment": "project.utils.xtemplates.build_jinja2_environment",
+            "environment": "project.utils.jinja2env.build_jinja2_environment",
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
@@ -116,3 +117,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = REPO_DIR / ".static"  # куда соберется вся статика после команды collectstatic - папка создается.
 # в джанге куча статики в разных местах и разных приложениях
+
+# LOGIN_URL = reverse_lazy("onboarding:sign_in")
+# LOGIN_REDIRECT_URL = reverse_lazy("blog:post:all_post")
+

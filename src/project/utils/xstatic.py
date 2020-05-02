@@ -19,5 +19,5 @@ def render_static(file_path: Path, content_type: str) -> HttpResponse:
     return response
 
 # def resolve_static_path(path: str):
-#     static = here.parent.parent / "src/project/static"
-#     return static / path
+#      static = here.parent.parent / "src/project/static"
+#      return static / path
