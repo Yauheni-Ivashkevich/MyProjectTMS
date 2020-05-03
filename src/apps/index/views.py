@@ -10,7 +10,11 @@ class IndexView(TemplateView):
         parent_ctx = super().get_context_data(**kwargs)
 
         info = UserInfo.objects.first()
-        ctx = {"name": info.name, "greeting": info.greeting}
+
+        if info:
+            ctx = {"name": info.name, "greeting": info.greeting, "age": info.age}
+        else:
+            ctx = { "name": "", "greeting": "", "age": "" }
 
         ctx.update(parent_ctx)
 

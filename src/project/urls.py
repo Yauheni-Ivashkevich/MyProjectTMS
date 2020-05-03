@@ -8,7 +8,7 @@ from django.urls import include, path
 #         content = src.read()  # читаем открытый объект
 #         resp = HttpResponse(content, content_type=ct)  # response
 #         return resp  # выполняем
-from project.utils.static import render_static, resolve_static_path
+#from project.utils.static import render_static, resolve_static_path
 
 # def view_jpg(r):
 #     return render_static(resolve_static_path('pic.jpg'), 'image/jpg')

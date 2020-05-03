@@ -4,7 +4,7 @@ from django.db import models as m
 # Create your models here.
 
 
-class UserInfo(m.Model):
+class UserInfo(m.Model):# m.Model имеет связь с БД
     name = m.TextField(
         unique=True
     )  # требование уникальности при вводе и нельзя ничего не вводит

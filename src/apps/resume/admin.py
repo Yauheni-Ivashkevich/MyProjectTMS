@@ -17,7 +17,12 @@ class TechnologyAdminModel(ModelAdmin):
 @admin.register(Project)
 class ProjectAdminModel(ModelAdmin):
     form = gen_textinput_admin_form(
-        Project, (Project.link, Project.name, Project.nda_name, Project.position,),
+        Project, (
+            Project.name,
+            Project.nda_name,
+            Project.position,
+            Project.link
+        ),
     )
 
 
