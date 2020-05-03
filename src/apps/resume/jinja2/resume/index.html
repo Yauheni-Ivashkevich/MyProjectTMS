@@ -20,7 +20,20 @@
 <br>
 <br>
 <article class="bg-content">
-    <h2>Employment history</h2>
+    <h2> {{ title }}</h2>
+    <p>{{ description }}</p>
+    <h3> {{ name }}</h3>
+
+    {% for experience in experiences %}
+        {{ experience.position }}<br/>
+        {{ experience.started_at }}<br/>
+        {{ experience.finished_at }}<br/>
+        {{ experience.responsibilities }}<br/>
+        {{ experience.experience.name }}<br/>
+        {{ experience.experience.description }}<br/>
+        {{ experience.experience.area }}<br/>
+    {% endfor %}
+
 
     {% for project in object_list %}
     <section>

@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     "apps.index",
     "apps.resume",
     "apps.projects",
-    "apps.thoughts",
+    "apps.users",
     #"apps.blog.appsBlogConfig", (для пакета blog)
 ]
 

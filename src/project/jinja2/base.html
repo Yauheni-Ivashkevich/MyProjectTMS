@@ -19,8 +19,6 @@
                href="{{ url ('resume:index') }}">Resume</a>
             <a class="{% if ns.startswith('projects') %}active{% endif %}"
                href="{{ url ('projects:index') }}">Projects</a>
-            <a class="{% if ns.startswith('thoughts') %}active{% endif %}"
-               href="{{ url ('thoughts:index') }}">Thoughts</a>
             {% endwith %}
         </nav>
         <p class="main-title">{% block header %}{% endblock %}</p>

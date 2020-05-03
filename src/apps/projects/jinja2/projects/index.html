@@ -15,24 +15,30 @@
 
     <h2>Projects</h2><br>
 
-    <section>
-        <a href="http://climate.ecopartnerstvo.by/ru/news/179"><h2>Vileyka becomes more mobile</h2></a>
-        <p>How the city of Vileyka becomes more mobile.</p>
+    {% for project in projects %}
+        <section>
+            <a href="{{ project.link }}">
+                <h2>{{ project.linkName }}</h2>
+            </a>
+            <br/>
+            <p>{{ project.description }}</p>
 
-    </section>
+            {% if project.gallery %}
+                <div>{{ project.gallery }}</div>
+            {% endif %}
+            <ul>
+                <li><b>Start at: </b> {{ project.started_at }}</li>
+                <li><b>Duration: </b> {{ project.duration }}</li>
+            </ul>
+            {% if project.sponsor %}
+                <br/>
+                <h3>Sponsor</h3>
+                <p>{{ project.sponsor }}</p>
+            {% endif %}
 
-    <section>
-        <a href="https://zovik.by/news/velaj-dobro"><h2>VelayDobro interactive bike site</h2></a>
-        <p> VelayDobro interactive bike site - the beginning of good deeds in Vileika Cycling.</p>
+        </section>
+        <br/>
+     {% endfor %}
 
-    </section>
-
-    <section>
-        <a href="https://eurovelo.by/2019/10/31/velomarshrut-nad-viliey/"><h2>The bicycle route</h2></a>
-        <p> The bicycle route “And over the Viliya River”.</p>
-
-    </section>
 </article>
-
-
 {% endblock %}
