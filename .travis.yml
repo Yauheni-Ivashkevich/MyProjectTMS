@@ -7,13 +7,14 @@ services:
 env:
   global:
     - ENV_FOR_DYNACONF=travis
+    - DYNACONF_DATABASE_URL="postgresql://postgres@localhost:5432/test"
 
 install:
   - pip install pipenv --upgrade
-  - make install static
+  - make venv static
 
 before_script:
-  - psql -c 'create database test;' -U postgres
+  - make resetdb
 
 script:
   - make test
@@ -26,4 +27,4 @@ cache: pip
 jobs:
   include:
     - stage: test
-      python: '3.8'
+      python: '3.7'

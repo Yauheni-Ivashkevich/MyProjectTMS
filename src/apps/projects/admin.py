@@ -10,7 +10,8 @@ from project.utils.xforms import gen_textinput_admin_form
 @admin.register(Project)
 class ProjectAdminModel(ModelAdmin):
     form = gen_textinput_admin_form(
-        Project, (
+        Project,
+        (
             Project.name,
             Project.link,
             Project.linkName,
@@ -19,6 +20,6 @@ class ProjectAdminModel(ModelAdmin):
             Project.started_at,
             Project.finished_at,
             Project.sponsor,
-            Project.sponsorLogo
+            Project.sponsorLogo,
         ),
     )

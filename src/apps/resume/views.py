@@ -15,7 +15,7 @@ class IndexView(TemplateView):
             "title": resume.title,
             "description": resume.description,
             "name": resume.user.name,
-            "experiences": resume.experience.all()
+            "experiences": resume.experience.all(),
         }
 
         ctx.update(parent_ctx)

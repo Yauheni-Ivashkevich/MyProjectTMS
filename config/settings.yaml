@@ -16,7 +16,21 @@ heroku:
     - localhost
   DEBUG: false
 
-travis:
-  DATABASE_URL: "postgresql://postgres@localhost:5432/sd"
-  DEBUG: true
+test:
+  EMAIL_FROM: "test@test.name"
+  MODE_CACHING: 1
+  MODE_DEBUG: 1
+  MODE_PROFILING: 0
   SECRET_KEY: "1"
+  SITE_ID: 1
+  TIME_ZONE: "UTC"
+
+
+travis:
+  EMAIL_FROM: "test@test.name"
+  MODE_CACHING: 1
+  MODE_DEBUG: 1
+  MODE_PROFILING: 0
+  SECRET_KEY: "1"
+  SITE_ID: 1
+  TIME_ZONE: "UTC"

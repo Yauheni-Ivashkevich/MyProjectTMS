@@ -5,8 +5,15 @@ verify_ssl = true
 
 [dev-packages]
 black = "==19.10b0"
+codecov = "*"
+coverage = "*"
+django-silk = "*"
+freezegun = "*"
 httpie = "*"
+ipython = "*"
 isort = "*"
+line-profiler = "*"
+pudb = "*"
 
 [packages]
 django = "*"

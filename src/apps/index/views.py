@@ -12,9 +12,9 @@ class IndexView(TemplateView):
         info = User.objects.first()
 
         if info:
-            ctx = {"name": info.name, "greeting": info.about }
+            ctx = {"name": info.name, "greeting": info.about}
         else:
-            ctx = { "name": "", "greeting": "" }
+            ctx = {"name": "", "greeting": ""}
 
         ctx.update(parent_ctx)
 
