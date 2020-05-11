@@ -21,7 +21,6 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-# отвечает за активные приложения для данного проекта
 INSTALLED_APPS = [
     "django.contrib.admin",  # отвечает за админку
     "django.contrib.auth",  # отвечает за управление пользователями
@@ -33,8 +32,8 @@ INSTALLED_APPS = [
     "apps.index",
     "apps.resume",
     "apps.projects",
-    "apps.users",
-    #"apps.blog.appsBlogConfig", (для пакета blog)
+    "apps.onboarding",
+    "apps.feedback",
 ]
 
 MIDDLEWARE = [
@@ -53,7 +52,7 @@ ROOT_URLCONF = "project.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.jinja2.Jinja2",
-        "DIRS": [PROJECT_DIR / "jinja2", ],  # где искать шаблоны
+        "DIRS": [PROJECT_DIR / "jinja2",],  # где искать шаблоны
         "APP_DIRS": True,
         "OPTIONS": {
             "environment": "project.utils.jinja2env.build_jinja2_environment",
@@ -93,9 +92,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator", },
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator", },
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator", },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
 
 LANGUAGE_CODE = "en-us"
@@ -115,9 +114,11 @@ STATICFILES_DIRS = [
     PROJECT_DIR / "static",
 ]
 
-STATIC_ROOT = REPO_DIR / ".static"  # куда соберется вся статика после команды collectstatic - папка создается.
+STATIC_ROOT = (
+    REPO_DIR / ".static"
+)  # куда соберется вся статика после команды collectstatic - папка создается.
 # в джанге куча статики в разных местах и разных приложениях
 
 # LOGIN_URL = reverse_lazy("onboarding:sign_in")
-# LOGIN_REDIRECT_URL = reverse_lazy("blog:post:all_post")
-
+# LOGIN_REDIRECT_URL = reverse_lazy("feedback:post:all_post") # перенаправление юзера после логина
+# LOGIN_REDIRECT_URL = reverse_lazy("actual")

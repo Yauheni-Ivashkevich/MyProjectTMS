@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block container %}
+ <div class = "loginform">
+{% if form.errors %}
+<p>Errors:</p>
+<p>{{form.errors}}</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p>Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+<form class ="signup" method="post" action="{% url 'signup' %}">
+    {% csrf_token %}
+
+    {{ form.username.label}}
+    {{ form.username}}
+<br>
+    {{ form.email.label}}
+    {{ form.email}}
+<br>
+    {{ form.password1.label}}
+    {{ form.password1}}
+<br>
+    {{ form.password2.label}}
+    {{ form.password2}}
+<br>
+    <input type="submit" value="Sign Up">
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+ </div>
+
+{% endblock %}

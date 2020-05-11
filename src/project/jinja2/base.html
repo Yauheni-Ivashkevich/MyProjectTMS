@@ -6,11 +6,14 @@
     <link href="{{ static('css/styles.css') }}" rel="stylesheet" type="text/css">
     {% block styles %}{% endblock %}
     <link href="{{ static ('script.js') }}" rel="stylesheet" type="text/javascript">
+     <link href="{{ static('favicon.ico') }}" rel="shortcut icon" type="image/png"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 <div class="main-wrapper">
     <header class="main-header">
+        <a class="logo" href="{{ url('index:index') }}"><img src="{{ static('logo.png') }}" alt="Logo" width="80px"/></a>
         <nav class="main-menu">
             {% with ns = request.resolver_match.namespace %}
             <a class="{% if ns.startswith('index') %}active{% endif %}"
@@ -19,6 +22,8 @@
                href="{{ url ('resume:index') }}">Resume</a>
             <a class="{% if ns.startswith('projects') %}active{% endif %}"
                href="{{ url ('projects:index') }}">Projects</a>
+            <a class="{% if ns.startswith('feedback') %}active{% endif %}"
+               href="{{ url ('feedback:all_posts') }}">Feedback</a>
             {% endwith %}
         </nav>
         <p class="main-title">{% block header %}{% endblock %}</p>

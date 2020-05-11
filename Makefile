@@ -59,10 +59,10 @@ sh:
 
 .PHONY: test
 test:
-	ENV_FOR_DYNACONF=test \
+	set ENV_FOR_DYNACONF=test
 	${PY} coverage run \
 		src/manage.py test ${TEST_PARAMS} \
-			applications \
+			apps \
 			project \
 
 	${PY} coverage report

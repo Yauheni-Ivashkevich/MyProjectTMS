@@ -6,12 +6,16 @@
 
 }
 
-.index-main img {
+.index-main .image {
     /*  место куда дочерний элемент должен попасть в сетке */
     grid-area: image;
 }
 
-.index-main p {
+.index-main .image img {
+    width: 100%;
+}
+
+.index-main .text {
     /*  место куда дочерний элемент должен попасть в сетке */
     grid-area: text;
     font-size: 40px;
@@ -47,7 +51,7 @@
         grid-template:
             'image text';
         /* сколько каждая из столбец будет занимать место */
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 390px 1fr;
         align-items: start;
     }
 }

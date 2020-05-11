@@ -27,13 +27,13 @@
                 <div>{{ project.gallery }}</div>
             {% endif %}
             <ul>
-                <li><b>Start at: </b> {{ project.started_at }}</li>
-                <li><b>Duration: </b> {{ project.duration }}</li>
+                <h3><li><b>Start at: </b> {{ project.started_at }}</li>
+                    <li><b>Duration: </b> {{ project.duration }}</li></h3>>
             </ul>
-            {% if project.sponsor %}
+            {% if project.donor %}
                 <br/>
-                <h3>Sponsor</h3>
-                <p>{{ project.sponsor }}</p>
+                <h3>Donor</h3>
+                <p>{{ project.donor }}</p>
             {% endif %}
 
         </section>

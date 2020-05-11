@@ -6,6 +6,7 @@
 .main-header nav {
     /* переместить блок в правую сторону */
     float: right;
+    margin: 10px 0 0 0;
 }
 
 .main-header nav a {
@@ -15,8 +16,18 @@
 .main-title {
     font: var(--font-h3);
     color: var(--color-main);
-    margin: 0;
+    margin: 10px 0 0 0;
     /*тут же можно написать любые стили для заголовка Ивашкевич*/
+}
+
+.logo {
+    display: inline-block;
+    float: left;
+}
+
+.logo img {
+    width: 40px;
+    margin: 0 15px 0 0;
 }
 
 @media (max-width: 480px) {
@@ -27,4 +38,9 @@
         /* задать внешний отступ слева */
         margin-left: var(--secondary-gap);
     }
+}
+
+img {
+    margin-right: 15px;
+    margin-bottom: 20px;
 }

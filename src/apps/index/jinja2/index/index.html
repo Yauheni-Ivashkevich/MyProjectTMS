@@ -6,7 +6,32 @@
 {% endblock %}
 {% block main %}
 <article class="index-main">
+    <div class="image">
     <img alt="myfoto" src="{{ static ('index/pic.jpg') }}"/>
-    <p> {{ greeting | safe }} </p>
+
+    </div>
+    <div class="text">
+        <p class="bg-content"> {{ greeting | safe }} </p>
+
+        <h2 class="bg-content">About me</h2>
+        <p class="bg-content"> {{ about | safe }} </p>
+        <p class="bg-content">I have higher education in «Jurisprudence» and about 10 years of experience
+            as in-house lawyer and about 4 years of experience as entrepreneur. </p>
+        <p class="bg-content">In addition, for about five years I have been a project manager at the Public Organization<br>
+            for the promotion of sustainable development <br> of the Vileika District "ZOViK".</p>
+        <p class="bg-content">And during this time I have implemented a number of projects aimed at the development<br>
+            of my native Vileika region.</p>
+        <p class="bg-content">I am currently attending a Python course at the TeachMeSkills programming school
+            to get an opportunity to study the Python ecosystem,<br>
+            learn how to develop applications for the Django framework, work with a database and servers.</p>
+        <p class="bg-content">Hope soon I'll achieve that level of knowledge that let me
+            find my first job on my new specialty.</p>
+        <p class="bg-content">Recommendations may be provided upon request.
+            <a href="https://github.com/Yauheni-Ivashkevich">asdas</a>
+        </p>
+
+    </div>
+
 </article>
+
 {% endblock %}

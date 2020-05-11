@@ -2,6 +2,7 @@ from datetime import date
 from datetime import datetime
 from typing import NamedTuple
 from typing import Optional
+
 from delorean import Delorean
 from django.conf import settings
 

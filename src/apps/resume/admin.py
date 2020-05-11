@@ -1,41 +1,26 @@
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
-from apps.resume.models import Job
-from apps.resume.models import Experience
-from apps.resume.models import Resume
-from project.utils.xforms import gen_textinput_admin_form
+
+from apps.resume.models import Organization
+from apps.resume.models import Responsibility
+from apps.resume.models import ResumePage
+from project.utils.forms import gen_textinput_admin_form
 
 
-@admin.register(Job)
-class JobAdminModel(ModelAdmin):
+@admin.register(ResumePage)
+class ResumePageAdminModel(ModelAdmin):
     form = gen_textinput_admin_form(
-        Job, (
-            Job.name,
-            Job.description,
-            Job.area,
-        ),
+        ResumePage, (ResumePage.title, ResumePage.description)
     )
 
 
-@admin.register(Experience)
-class JobAdminModel(ModelAdmin):
+@admin.register(Organization)
+class OrganizationAdminModel(ModelAdmin):
     form = gen_textinput_admin_form(
-        Experience, (
-            Experience.position,
-            Experience.started_at,
-            Experience.finished_at,
-            Experience.responsibilities,
-        ),
+        Organization, (Organization.name, Organization.position)
     )
 
 
-@admin.register(Resume)
-class ResumeAdminModel(ModelAdmin):
-    form = gen_textinput_admin_form(
-        Resume, (
-            Resume.title,
-            Resume.description,
-            Resume.experience,
-            Resume.user,
-        ),
-    )
+@admin.register(Responsibility)
+class ResponsibilityAdminModel(ModelAdmin):
+    pass

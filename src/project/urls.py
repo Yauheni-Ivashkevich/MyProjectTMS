@@ -1,14 +1,17 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpRequest
 from django.shortcuts import render
-from django.urls import include, path
+from django.urls import include
+from django.urls import path
 
 # def read_static(fn, ct):  # fn = filename, ct = content type
 #     with open(fn, "rb") as src:  # открываем объект (для картинок стоит "rb" - читать в бинарном формате
 #         content = src.read()  # читаем открытый объект
 #         resp = HttpResponse(content, content_type=ct)  # response
 #         return resp  # выполняем
-#from project.utils.static import render_static, resolve_static_path
+# from project.utils.static import render_static, resolve_static_path
 
 # def view_jpg(r):
 #     return render_static(resolve_static_path('pic.jpg'), 'image/jpg')
@@ -23,10 +26,9 @@ urlpatterns = [
     path("", include("apps.index.urls")),
     path("resume/", include("apps.resume.urls")),
     path("projects/", include("apps.projects.urls")),
-
-    #path("post/<int:pk>", views.BlogPostView.as.view(), name = "post")), # функция показывающая, что необходимо вызвать
-    # т.е. взять имя и испонить (функция Blog)
-
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("o/", include("apps.onboarding.urls")),
+    path("feedback/", include("apps.feedback.urls")),
     # path('projects/', view_projects, name="projects"),
     # path('pic.jpg', view_jpg),
     # path('styles1.css', view_styles),
