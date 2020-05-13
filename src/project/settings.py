@@ -32,12 +32,13 @@ INSTALLED_APPS = [
     "apps.index",
     "apps.resume",
     "apps.projects",
-    "apps.onboarding",
+    "apps.onboarding.apps.OnboardingConfig",
     "apps.feedback",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",

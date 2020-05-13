@@ -16,28 +16,24 @@
     <h2>Projects</h2><br>
 
     {% for project in projects %}
-        <section>
-            <a href="{{ project.link }}">
-                <h2>{{ project.linkName }}</h2>
-            </a>
-            <br/>
-            <p>{{ project.description }}</p>
+    <div class="text">
+        <p>{{ project.link | safe }} </p>
+        <p>{{ project.description }}</p>
 
-            {% if project.gallery %}
+        {% if project.gallery %}
                 <div>{{ project.gallery }}</div>
             {% endif %}
             <ul>
-                <h3><li><b>Start at: </b> {{ project.started_at }}</li>
-                    <li><b>Duration: </b> {{ project.duration }}</li></h3>>
+                <h4><li><b>Start at: </b> {{ project.started_at }}</li>
+                    <li><b>Duration: </b> {{ project.duration }}</li></h4>>
             </ul>
             {% if project.donor %}
                 <br/>
                 <h3>Donor</h3>
                 <p>{{ project.donor }}</p>
             {% endif %}
-
-        </section>
-        <br/>
+    </div>
+    <br/>
      {% endfor %}
 
 </article>

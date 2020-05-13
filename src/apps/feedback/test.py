@@ -3,16 +3,22 @@ from unittest import skip
 from django.test import Client
 from django.test import TestCase
 
-from apps.feedback.views import IndexView
+from apps.feedback.views import AllFeedbackPostsView, FeedbackPostView
 
+from project.utils.validate_response import TemplateResponseTestMixin
 
 @skip
-class Test(TestCase):
-    def setUp(self) -> None:
-        self.cli = Client()
+class Test(TestCase, TemplateResponseTestMixin):
 
     def test_get(self):
-        resp = self.cli.get("/feedback/")
+        self.validate_response(
+            url="/feedback/",
+            expected_view=AllFeedbackPostsView,
+            expected_template="feedback/post.html",
+            expected_view_name="feedback:post",
+        )
+
+
         self.assertEqual(resp.status_code, 200)
         self.assertEqual(len(resp.templates), 2)
         self.assertEqual(
