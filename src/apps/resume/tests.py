@@ -15,8 +15,8 @@ class Test(TestCase, TemplateResponseTestMixin):
 
         # resp = Responsibility(summary=placeholder)
 
-        pj = Organization(name=placeholder)
-        self.assertEqual(str(pj), f"{placeholder} [id_{pj.pk}]")
+        org = Organization(name=placeholder)
+        self.assertEqual(str(org), f"{placeholder} [id_{org.pk}]")
 
     def test_responsibility(self):
         placeholder = urandom(4).hex()

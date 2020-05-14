@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block container %}
+{% block main %}
  <div class = "loginform">
 {% if form.errors %}
 <p>Errors:</p>
@@ -15,20 +15,20 @@
     {% endif %}
 {% endif %}
 
-<form class ="signup" method="post" action="{% url 'signup' %}">
-    {% csrf_token %}
+<form class ="signup" method="post" action="{{ url ('signup') }}">
+    {{ csrf_input }}
 
-    {{ form.username.label}}
-    {{ form.username}}
+    {{ form.username.label }}
+    {{ form.username }}
 <br>
-    {{ form.email.label}}
-    {{ form.email}}
+    {{ form.email.label }}
+    {{ form.email }}
 <br>
-    {{ form.password1.label}}
-    {{ form.password1}}
+    {{ form.password1.label }}
+    {{ form.password1 }}
 <br>
-    {{ form.password2.label}}
-    {{ form.password2}}
+    {{ form.password2.label }}
+    {{ form.password2 }}
 <br>
     <input type="submit" value="Sign Up">
     <input type="hidden" name="next" value="{{ next }}">

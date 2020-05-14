@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block container %}
+{% block main %}
     <div class = "loginform">
 {% if form.errors %}
 <div class="error">Your username and password didn't match. Please try again.</div>
@@ -15,7 +15,7 @@
 {% endif %}
 
 <form method="post" action="{%url 'login' %}" class="form">
-    {% csrf_token %}
+    {{ csrf_input }}
 {{ form.username.label_tag }}
     {{ form.username}}
     <br>

@@ -23,7 +23,7 @@ class SignUpForm(UserCreationForm):
 
 
 class SignUpView(FormView):
-    template_name = "registration/signup.html"
+    template_name = "onboarding/signup.html"
     form_class = SignUpForm
     success_url = reverse_lazy("index:index")
 
