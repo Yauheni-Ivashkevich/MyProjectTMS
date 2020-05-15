@@ -9,93 +9,32 @@
 <article class="bg-content">
     <h2> {{ resume_list.first().title | safe }}</h2>
     <p>{{ resume_list.first().description | safe  }}</p>
-    <br/>
+    <h4>Organizations:</h4>
+{% for organization in object_list %}
+        {{ organization.name | safe }}
+        {% if organization.position  %}
+        {{ organization.position | safe}}
+        {% endif %}
 
-    {% for organization in object_list %}
-        {{ organization.name }}<br/>
-        {{ organization.position }}<br/>
     <p>From {{ organization.started_at }} till {{ organization.finished_at }}</p>
-        {{ organization.achievements_text }}<br/>
-    <a href="{{ organization.link }}"> </a><br/>
-    {% endfor %}
+        {% if organization.achievements_text %}
+        {{ organization.achievements_text }}
+        {% endif %}
 
-     {% if organization %}
-        {% if organization.responsibilities.count() %}
-        <h2>Responsibilities</h2>
+        {% if organization.link  %}
+    <a href="{{ organization.link }}"> </a>
+        {% endif %}
+    {% if organization.responsibilities.count() %}
+        <h5>Responsibilities:</h5>
         <ul>
         {% for resp in organization.responsibilities.all() %}
-            <li>{{ resp.summary }}</li>
+            <li>{{ resp.summary | safe }}</li> <br>
         {% endfor %}
         </ul>
-        {% endif %}
     {% endif %}
+{% endfor %}
 
-
-    {% for project in object_list %}
-    <section>
-        <h3>{% if project.on_air %}🔥 {% endif -%} {{ project.actual_name }}
-            from 01/2015 till now: Public Organization for the Promotion of Sustainable Development <br>
-            of the Vileika District "ZOViK"</h3>
-        <p>Project manager</p>
-        <p>Responsibilities:</p>
-        <ul>
-            <li>Project management</li>
-        </ul>
-        <p>Framework:</p>
-        <ul>
-            <li>Monitoring ongoing contests of mini-grants,trainings and activities for sustainable development</li>
-            <li>Assistance in organizing and conducting events, trainings and seminars on sustainable development</li>
-            <li>Legal support for projects implemented by the organization</li>
-            <li>The development of urban cycling in the Vileika region</li>
-        </ul>
-    </section>
-
-    <section>
-        <h3>from 01/2015 till now: Private service company "STC"</h3>
-        <p>Head of the legal department</p>
-        <p>Responsibilities:</p>
-        <ul>
-            <li>Full legal support of the enterprise</li>
-        </ul>
-        <p>Framework:</p>
-        <ul>
-            <li>Conducting business correspondence</li>
-            <li>Organization and coordination of contractual work, development and examination of contracts</li>
-            <li>Organization workflow coordination (legal analysis of documents, preparation of legal opinions)</li>
-            <li>Legal analysis and legal advice</li>
-        </ul>
-    </section>
-
-    <section>
-        <h3>from 12/2015 till now: Entrepreneur</h3>
-        <p>Entrepreneur</p>
-        </ul>
-        <p>Framework:</p>
-        <ul>
-            <li>Legal services, specialized office activities, repair of computers and peripheral equipment,
-                activities promoting cultural and entertainment events
-            </li>
-        </ul>
-    </section>
-
-    <section>
-        <h3>from 04/2009 till 06/2014: State trading enterprise "Sodruzhestvo"</h3>
-        <p>Leading Legal Advisor</p>
-        <p>Responsibilities:</p>
-        <ul>
-            <li>Corporate law, personnel matters, legal issues (advising employees),
-                representing the interests of the enterprise in courts, government bodies and institutions
-            </li>
-        </ul>
-        <p>Framework:</p>
-        <ul>
-            <li>Development and preparation of any contracts, claim and claim work, collection of receivables
-                (writ, lawsuit, enforcement proceedings)
-            </li>
-            <li>representation of the enterprise in courts of various instances</li>
-        </ul>
-    </section>
-    {% endfor %}
 </article>
 
 {% endblock %}
+
