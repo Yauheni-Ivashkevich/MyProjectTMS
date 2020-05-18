@@ -1,6 +1,7 @@
 from os import urandom
 from unittest import skip
 
+from django.test import Client
 from django.test import TestCase
 
 from apps.index.models import MainPage
@@ -10,7 +11,14 @@ from project.utils.validate_response import TemplateResponseTestMixin
 
 
 class Test(TestCase, TemplateResponseTestMixin):
+    def setUp(self):
+        self.cli = Client()
+
     def test_get(self):
+        info = UserInfo(name="xxx")
+        info.save()
+        info1 = MainPage(title="xxx")
+        info1.save()
         self.validate_response(
             url="/",
             expected_view_name="index:index",

@@ -8,5 +8,5 @@ source = .
 
 [report]
 
-fail_under = 96
+fail_under = 70
 skip_covered = True

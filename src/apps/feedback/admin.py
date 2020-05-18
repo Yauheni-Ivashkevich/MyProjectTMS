@@ -7,5 +7,3 @@ from apps.feedback.models import FeedbackPost
 @admin.register(FeedbackPost)
 class FeedbackPostAdminModel(ModelAdmin):
     pass
-
-

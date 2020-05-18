@@ -23,7 +23,4 @@ class OrganizationAdminModel(ModelAdmin):
 
 @admin.register(Responsibility)
 class ResponsibilityAdminModel(ModelAdmin):
-    form = gen_textinput_admin_form(
-        Responsibility, (Responsibility.summary,)
-    )
-
+    form = gen_textinput_admin_form(Responsibility, (Responsibility.summary,))
