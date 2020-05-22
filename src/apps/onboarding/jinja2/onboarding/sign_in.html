@@ -1,0 +1,47 @@
+{% extends "_base.html" %}
+
+{% block title %}Sign In{% endblock %}
+
+{% block header %}Sign In{% endblock %}
+
+{% block main %}
+
+    <article>
+
+        {% if form.errors %}
+            <p>Some errors</p>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                   please login with an account that has access.</p>
+            {% else %}
+                <p>Please login to see this page.</p>
+            {% endif %}
+        {% endif %}
+
+    </article>
+
+    <article>
+
+        <form action="{{ url('onboarding:sign_in') }}" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            <div class="grid">
+                <p>
+                    {{ form.username.label_tag() }}
+                    {{ form.username }}
+                </p>
+                <p>
+                    {{ form.password.label_tag() }}
+                    {{ form.password }}
+                </p>
+            </div>
+
+            <button type="submit" class="button">Sign In</button>
+            <input name="next" type="hidden" value="{{ next }}">
+        </form>
+
+    </article>
+
+{% endblock %}

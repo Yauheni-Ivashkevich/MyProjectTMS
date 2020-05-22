@@ -2,6 +2,7 @@ from os import getenv
 from pathlib import Path
 
 import dj_database_url
+from django.urls import reverse_lazy
 from dynaconf import settings as _settings
 
 from project.utils.consts import AGE_1DAY
@@ -14,6 +15,7 @@ REPO_DIR = BASE_DIR.parent.resolve()  # /MyProjectTMS
 SECRET_KEY = _settings.SECRET_KEY
 
 DEBUG = _settings.DEBUG
+PROFILING = _settings.PROFILING
 
 ALLOWED_HOSTS = _settings.ALLOWED_HOSTS
 
@@ -21,32 +23,45 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-INSTALLED_APPS = [
-    "django.contrib.admin",  # отвечает за админку
-    "django.contrib.auth",  # отвечает за управление пользователями
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
+INSTALLED_APPS_ORDERED = {
+    0: "django.contrib.admin",  # отвечает за админку
+    10: "django.contrib.auth",  # отвечает за управление пользователями
+    20: "django.contrib.contenttypes",
+    30: "django.contrib.sessions",
+    40: "django.contrib.messages",
+    50: "django.contrib.staticfiles",
+    60: "django.contrib.sites",
     # --- my apps ---
-    "apps.index",
-    "apps.resume",
-    "apps.projects",
-    "apps.onboarding.apps.OnboardingConfig",
-    "apps.feedback",
-]
+    1000: "apps.index",
+    2000: "apps.resume",
+    3000: "apps.projects",
+    4000: "apps.onboarding.apps.OnboardingConfig",
+    5000: "apps.feedback",
+}
+if PROFILING:
+    INSTALLED_APPS_ORDERED[49] = "silk"
 
-MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
-]
+INSTALLED_APPS = [app for _, app in sorted(INSTALLED_APPS_ORDERED.items())]
+
+MIDDLEWARE_ORDERED = {
+    0: "django.middleware.security.SecurityMiddleware",
+    10: "django.contrib.sessions.middleware.SessionMiddleware",
+    20: "whitenoise.middleware.WhiteNoiseMiddleware",
+    30: "django.contrib.sessions.middleware.SessionMiddleware",
+    40: "django.middleware.common.CommonMiddleware",
+    50: "django.middleware.csrf.CsrfViewMiddleware",
+    60: "django.contrib.auth.middleware.AuthenticationMiddleware",
+    70: "django.contrib.messages.middleware.MessageMiddleware",
+    80: "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    90: "django.contrib.sites.middleware.CurrentSiteMiddleware",
+}
+if PROFILING:
+    MIDDLEWARE_ORDERED[71] = "silk.middleware.SilkyMiddleware"
+    SILKY_PYTHON_PROFILER = True
+    SILKY_PYTHON_PROFILER_BINARY = True
+
+
+MIDDLEWARE = [mw for _, mw in sorted(MIDDLEWARE_ORDERED.items())]
 
 ROOT_URLCONF = "project.urls"
 
@@ -89,14 +104,14 @@ DATABASES = {
     "default": dj_database_url.parse(_db_url, conn_max_age=600),
 }
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
-]
+# AUTH_PASSWORD_VALIDATORS = [
+#     {
+#         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+#     },
+#     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
+#     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
+#     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+# ]
 
 LANGUAGE_CODE = "en-us"
 
@@ -115,11 +130,29 @@ STATICFILES_DIRS = [
     PROJECT_DIR / "static",
 ]
 
-STATIC_ROOT = (
-    REPO_DIR / ".static"
-)  # куда соберется вся статика после команды collectstatic - папка создается.
+STATIC_ROOT = REPO_DIR / ".static"  # куда соберется вся статика после команды collectstatic - папка создается.
 # в джанге куча статики в разных местах и разных приложениях
 
-# LOGIN_URL = reverse_lazy("onboarding:sign_in")
-# LOGIN_REDIRECT_URL = reverse_lazy("feedback:post:all_post") # перенаправление юзера после логина
-# LOGIN_REDIRECT_URL = reverse_lazy("actual")
+if not DEBUG:
+    import sentry_sdk
+    from sentry_sdk.integrations.django import DjangoIntegration
+
+    sentry_sdk.init(
+        dsn=_settings.SENTRY_DSN,
+        integrations=[DjangoIntegration()],
+        send_default_pii=True,
+    )
+
+EMAIL_HOST = _settings.EMAIL_HOST
+EMAIL_HOST_PASSWORD = _settings.EMAIL_HOST_PASSWORD
+EMAIL_HOST_USER = _settings.EMAIL_HOST_USER
+EMAIL_PORT = _settings.EMAIL_PORT
+EMAIL_USE_SSL = _settings.EMAIL_USE_SSL
+EMAIL_USE_TLS = _settings.EMAIL_USE_TLS
+
+EMAIL_FROM = _settings.EMAIL_FROM
+
+LOGIN_URL = reverse_lazy("onboarding:sign_in")
+LOGIN_REDIRECT_URL = reverse_lazy("onboarding:me")
+
+SITE_ID = _settings.SITE_ID

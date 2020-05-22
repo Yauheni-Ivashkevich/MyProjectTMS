@@ -1,3 +1,5 @@
+PROJECT_NAME = "gogenjack.herokuapp.com"
+
 AGE_1MINUTE = 60
 AGE_1HOUR = AGE_1MINUTE * 60
 AGE_1DAY = AGE_1HOUR * 24

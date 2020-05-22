@@ -58,18 +58,8 @@ class Test(TestCase):
         responsibility = Responsibility(name=placeholder)
         self.assertEqual(str(responsibility), f"{placeholder}")
 
-        responsibility = Responsibility(name=placeholder, version="1.0.0")
-        self.assertEqual(str(responsibility), f"{placeholder} 1.0.0")
 
     def test_resumepage(self):
         placeholder = urandom(4).hex()
         resumepage = ResumePage(title=placeholder)
         self.assertEqual(str(resumepage), f"ResumePage [id_{resumepage.pk}]")
-
-    def test_get(self):
-        self.validate_response(
-            url="/resume/",
-            expected_view=IndexView,
-            expected_view_name="resume:index",
-            expected_template="resume/index.html",
-        )

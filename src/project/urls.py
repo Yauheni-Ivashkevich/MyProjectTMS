@@ -34,3 +34,6 @@ urlpatterns = [
     # path('styles1.css', view_styles),
     # #path('script.js', view_js),
 ]
+
+if settings.DEBUG and settings.PROFILING:  # pragma: no cover
+    urlpatterns.append(re_path(r"^silk/", include("silk.urls", namespace="silk")))

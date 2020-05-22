@@ -1,0 +1,44 @@
+version: "3.3"
+services:
+  sidorov-dev-web:
+    build: ./
+    container_name: sidorov-dev-web
+    depends_on:
+      - sidorov-dev-db
+      - sidorov-dev-beat
+    entrypoint: ["docker/run-web.sh"]
+    environment:
+      PORT: 80
+    image: sidorov-dev-web
+    ports:
+      - "8000:80"
+  sidorov-dev-beat:
+    container_name: sidorov-dev-beat
+    depends_on:
+      - sidorov-dev-broker
+      - sidorov-dev-db
+    entrypoint: ["docker/run-beat.sh"]
+    image: sidorov-dev-web
+  sidorov-dev-broker:
+    container_name: sidorov-dev-redis
+    image: redis:latest
+  sidorov-dev-db:
+    container_name: sidorov-dev-db
+    environment:
+      POSTGRES_USER: alex
+      POSTGRES_PASSWORD: alex
+      POSTGRES_DB: sidorov-dev
+    image: postgres:latest
+    ports:
+      - "5433:5432"
+    restart: always
+  sidorov-dev-dba:
+    container_name: sidorov-dev-dba
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:

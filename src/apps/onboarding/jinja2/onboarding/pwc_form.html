@@ -1,0 +1,32 @@
+{% extends "_base.html" %}
+
+{% block title %}Change Password{% endblock %}
+
+{% block header %}Change Password{% endblock %}
+
+{% block main %}
+    <article>
+        {% if form.errors %}
+            <p>Errors during changing password: {{ form.errors }}</p>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p>Your account doesn't have access to this page. To proceed,
+                   please login with an account that has access.</p>
+            {% else %}
+                <p>Please login to see this page.</p>
+            {% endif %}
+        {% endif %}
+    </article>
+
+    <article>
+        <form action="{{ url('onboarding:pwc') }}" method="post">
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+            {{ form.as_p() }}
+            <button class="button" type="submit">Update</button>
+            <input name="next" type="hidden" value="{{ next }}">
+        </form>
+    </article>
+
+{% endblock %}

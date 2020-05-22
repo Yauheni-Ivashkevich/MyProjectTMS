@@ -25,7 +25,7 @@
                href="{{ url ('projects:index') }}">Projects</a>
             <a class="{% if ns.startswith('feedback') %}active{% endif %}"
                href="{{ url ('feedback:all_posts') }}">Feedback</a>
-            <a href="{{ url ('signup') }}">Registration</a>
+            <a href="{{ url('onboarding:index') }}">Registration</a>
             {% endwith %}
         </nav>
         <p class="main-title">{% block header %}{% endblock %}</p>

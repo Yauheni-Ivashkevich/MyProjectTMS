@@ -1,26 +1,54 @@
 default:
   ALLOWED_HOSTS: []
+  CELERY_BEAT_INVITATION: -1
+  CELERY_BROKER_URL: ""
   DATABASE_URL: ""
+  EMAIL_FROM: ""
+  EMAIL_HOST: ""
+  EMAIL_HOST_PASSWORD: ""
+  EMAIL_HOST_USER: ""
+  EMAIL_PORT: 0
+  EMAIL_USE_SSL: 0
+  EMAIL_USE_TLS: 0
   LOCAL_TIME_ZONE: "UTC"
-  DEBUG: true
+  DEBUG: false
+  PROFILING: true
   SECRET_KEY: ""
   SENTRY_DSN: ""
+  SITE_ID: 0
 
 development:
+  CELERY_BEAT_INVITATION: 30
   DEBUG: true
+  PROFILING: 0
+  SECRET_KEY: "1"
+  SITE_ID: 0
+
+docker:
+  CELERY_BEAT_INVITATION: 30
+  CELERY_BROKER_URL: "redis://sidorov-dev-broker"
+  DATABASE_URL: "postgresql://alex:alex@sidorov-dev-db:5432/sidorov-dev"
+  MODE_CACHING: 0
+  MODE_DEBUG: 0
+  MODE_PROFILING: 0
+  SECRET_KEY: "1"
+  SITE_ID: 1
+  TIME_ZONE: "Europe/Minsk"
 
 heroku:
   ALLOWED_HOSTS:
     - .gogenjack.herokuapp.com
     - 127.0.0.1
     - localhost
+  CELERY_BEAT_INVITATION: 90
   DEBUG: false
+  PROFILING: 0
 
 
 test:
   EMAIL_FROM: "test@test.name"
-  CACHING: 0
-  DEBUG: 1
+  MDEBUG: true
+  PROFILING: 0
   SECRET_KEY: "1"
   SITE_ID: 1
 
@@ -28,4 +56,6 @@ test:
 travis:
   DATABASE_URL: "postgresql://postgres@localhost:5432/sd"
   DEBUG: true
+  PROFILING: 0
   SECRET_KEY: "1"
+  SITE_ID: 1

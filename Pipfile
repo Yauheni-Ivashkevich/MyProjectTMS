@@ -5,10 +5,17 @@ verify_ssl = true
 
 [dev-packages]
 black = "==19.10b0"
+coverage = "*"
+django-silk = "*"
+freezegun = "*"
 httpie = "*"
+ipython = "*"
 isort = "*"
+line-profiler = "*"
+pudb = "*"
 
 [packages]
+celery = {extras = ["redis"],version = "*"}
 django = "*"
 whitenoise = "*"
 dj-database-url = "*"
@@ -17,3 +24,9 @@ psycopg2-binary = "*"
 jinja2 = "*"
 delorean = "*"
 django-ipware = "*"
+djangorestframework = "*"
+drf-yasg = {extras = ["validation"],version = "*"}
+gunicorn = "*"
+uvicorn = "*"
+sentry-sdk = "*"
+requests = "*"

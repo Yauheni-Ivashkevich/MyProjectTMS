@@ -32,6 +32,26 @@ run: static
 	${MANAGE} runserver
 
 
+.PHONY: beat
+beat:
+	PYTHONPATH=${PYTHONPATH} \
+	${RUN} celery worker \
+		--app periodic.app -B \
+		--config periodic.celeryconfig \
+		--workdir ${HERE}/src \
+		--loglevel=info
+
+
+.PHONY: docker
+docker: wipe
+	docker-compose build
+
+
+.PHONY: docker-run
+docker-run: docker
+	docker-compose up
+
+
 .PHONY: static
 static:
 	${MANAGE} collectstatic --noinput --clear -v0
@@ -63,6 +83,7 @@ test:
 	${PY} coverage run \
 		src/manage.py test ${TEST_PARAMS} \
 			apps \
+			periodic \
 			project \
 
 	${PY} coverage report
@@ -87,6 +108,18 @@ clean:
 	rm -rf htmlcov
 	find . -type d -name "__pycache__" | xargs rm -rf
 	rm -rf ./.static/
+
+
+.PHONY: clean-docker
+clean-docker:
+	docker-compose stop || true
+	docker-compose down || true
+	docker-compose rm --force || true
+	docker system prune --force
+
+
+.PHONY: wipe
+wipe: clean clean-docker
 
 
 .PHONY: resetdb
