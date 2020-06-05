@@ -1,0 +1,19 @@
+{% extends "_base.html" %}
+{% block title %}Anonymous{% endblock %}
+{% block header %}Anonymous{% endblock %}
+{% block main %}
+    {% if not user.is_authenticated %}
+        <article>
+            <h2>Actions</h2>
+            You are not authorized to see this content.
+            <section>
+                <ul>
+                    <li><a href="{{ url('onboarding:sign_in') }}">Sign In</a></li>
+                    <li><a href="{{ url('onboarding:sign_up') }}">Sign Up</a></li>
+                </ul>
+            </section>
+        </article>
+    {% else %}
+        {% block main_allowed %}{% endblock %}
+    {% endif %}
+{% endblock %}

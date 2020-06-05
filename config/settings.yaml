@@ -22,7 +22,7 @@ development:
   DEBUG: true
   PROFILING: 0
   SECRET_KEY: "1"
-  SITE_ID: 0
+  SITE_ID: 1
 
 docker:
   CELERY_BEAT_INVITATION: 30

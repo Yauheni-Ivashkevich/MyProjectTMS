@@ -13,7 +13,8 @@ class SignUpForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = [a(User.email)]
+        # fields = [a(User.email)]
+        fields = ["email"]
 
     def clean(self):
         super().clean()

@@ -17,12 +17,9 @@ class AuthProfileAdminForm(forms.ModelForm):
 @admin.register(AuthProfile)
 class AuthProfileAdminModel(ModelAdmin):
     readonly_fields = [
-        a(f)
-        for f in (
-            AuthProfile.user,
-            AuthProfile.verification_code,
-            AuthProfile.verified_at,
-        )
+        "user",
+        "verification_code",
+        "verified_at",
     ]
 
 
@@ -35,4 +32,4 @@ class ProfileAdminForm(forms.ModelForm):
 
 @admin.register(Profile)
 class ProfileAdminModel(ModelAdmin):
-    readonly_fields = [a(f) for f in (Profile.user,)]
+    readonly_fields = ["user"]

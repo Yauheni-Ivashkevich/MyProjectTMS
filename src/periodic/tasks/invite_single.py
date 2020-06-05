@@ -13,12 +13,12 @@ logger = get_task_logger(__name__)
 @app.task
 @safe
 def invite_single_user(email: str):
-    logger.debug(f"BEGIN | {invite_single_user.__name__} | {email=}")
+    logger.debug(f"BEGIN | {invite_single_user.__name__} | {email}")
 
     auth_profile_model = get_auth_profile_model()
     auth_profile = auth_profile_model.objects.get(user__email=email)
 
-    logger.debug(f"IN | {invite_single_user.__name__} | {auth_profile=}")
+    logger.debug(f"IN | {invite_single_user.__name__} | {auth_profile}")
     if not auth_profile.link:
         logger.debug(
             f"END |"
@@ -40,5 +40,5 @@ def invite_single_user(email: str):
     auth_profile.save()
 
     logger.debug(
-        f"END | {invite_single_user.__name__} | email for {auth_profile=} has been sent"
+        f"END | {invite_single_user.__name__} | email for {auth_profile} has been sent"
     )

@@ -1,0 +1,7 @@
+Hi!
+
+To complete your sign-up on {{service}}, please follow this link:
+
+{{ link }}
+
+Hope you will enjoy!

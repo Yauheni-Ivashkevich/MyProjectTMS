@@ -5,7 +5,6 @@ from typing import Dict
 from typing import List
 from typing import Optional
 
-
 from django.contrib.auth import get_user_model
 from django.test import Client
 from rest_framework import status

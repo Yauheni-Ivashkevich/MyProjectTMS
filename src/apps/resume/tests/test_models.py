@@ -51,13 +51,11 @@ class Test(TestCase):
         org = Organization(link_text="a\nb\nc\n", **kw)
         self.assertSetEqual(set(org.link), set("abc"))
 
-
     def test_responsibility(self):
         placeholder = urandom(4).hex()
 
         responsibility = Responsibility(name=placeholder)
         self.assertEqual(str(responsibility), f"{placeholder}")
-
 
     def test_resumepage(self):
         placeholder = urandom(4).hex()

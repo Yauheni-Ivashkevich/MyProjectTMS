@@ -130,7 +130,9 @@ STATICFILES_DIRS = [
     PROJECT_DIR / "static",
 ]
 
-STATIC_ROOT = REPO_DIR / ".static"  # куда соберется вся статика после команды collectstatic - папка создается.
+STATIC_ROOT = (
+    REPO_DIR / ".static"
+)  # куда соберется вся статика после команды collectstatic - папка создается.
 # в джанге куча статики в разных местах и разных приложениях
 
 if not DEBUG:
