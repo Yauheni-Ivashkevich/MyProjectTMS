@@ -1,5 +1,9 @@
 default:
   ALLOWED_HOSTS: []
+  AWS_ACCESS_KEY_ID: ""
+  AWS_LOCATION: ""
+  AWS_S3_REGION_NAME: ""
+  AWS_SECRET_ACCESS_KEY: ""
   CELERY_BEAT_INVITATION: -1
   CELERY_BROKER_URL: ""
   DATABASE_URL: ""
@@ -18,6 +22,8 @@ default:
   SITE_ID: 0
 
 development:
+  AWS_LOCATION: "development"
+  AWS_S3_REGION_NAME: "us-east-1"
   CELERY_BEAT_INVITATION: 30
   DEBUG: true
   PROFILING: 0
@@ -25,9 +31,11 @@ development:
   SITE_ID: 1
 
 docker:
+  AWS_LOCATION: "development"
+  AWS_S3_REGION_NAME: "us-east-1"
   CELERY_BEAT_INVITATION: 30
-  CELERY_BROKER_URL: "redis://sidorov-dev-broker"
-  DATABASE_URL: "postgresql://alex:alex@sidorov-dev-db:5432/sidorov-dev"
+  CELERY_BROKER_URL: "redis:redis://"
+  DATABASE_URL: "postgresql://eugene:1211@localhost:5432/tms"
   MODE_CACHING: 0
   MODE_DEBUG: 0
   MODE_PROFILING: 0
@@ -40,6 +48,8 @@ heroku:
     - .gogenjack.herokuapp.com
     - 127.0.0.1
     - localhost
+  AWS_LOCATION: "development"
+  AWS_S3_REGION_NAME: "us-east-1"
   CELERY_BEAT_INVITATION: 90
   DEBUG: false
   PROFILING: 0
@@ -51,6 +61,7 @@ test:
   PROFILING: 0
   SECRET_KEY: "1"
   SITE_ID: 1
+  TIME_ZONE: "UTC"
 
 
 travis:
@@ -59,3 +70,4 @@ travis:
   PROFILING: 0
   SECRET_KEY: "1"
   SITE_ID: 1
+  TIME_ZONE: "UTC"

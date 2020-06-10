@@ -5,6 +5,7 @@ from django.http import HttpRequest
 from django.shortcuts import render
 from django.urls import include
 from django.urls import path
+from django.urls import re_path
 
 # def read_static(fn, ct):  # fn = filename, ct = content type
 #     with open(fn, "rb") as src:  # открываем объект (для картинок стоит "rb" - читать в бинарном формате

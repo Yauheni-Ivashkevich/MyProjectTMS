@@ -104,14 +104,14 @@ DATABASES = {
     "default": dj_database_url.parse(_db_url, conn_max_age=600),
 }
 
-# AUTH_PASSWORD_VALIDATORS = [
-#     {
-#         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-#     },
-#     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-#     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-#     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
-# ]
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+    },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+]
 
 LANGUAGE_CODE = "en-us"
 
@@ -136,6 +136,9 @@ STATIC_ROOT = (
 # в джанге куча статики в разных местах и разных приложениях
 
 if not DEBUG:
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+if not DEBUG:
     import sentry_sdk
     from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -158,3 +161,12 @@ LOGIN_URL = reverse_lazy("onboarding:sign_in")
 LOGIN_REDIRECT_URL = reverse_lazy("onboarding:me")
 
 SITE_ID = _settings.SITE_ID
+
+# AWS_ACCESS_KEY_ID = _settings.AWS_ACCESS_KEY_ID
+# AWS_DEFAULT_ACL = "public-read"
+# AWS_LOCATION = _settings.AWS_LOCATION
+# AWS_QUERYSTRING_AUTH = False
+# AWS_S3_ADDRESSING_STYLE = "path"
+# AWS_S3_REGION_NAME = _settings.AWS_S3_REGION_NAME
+# AWS_SECRET_ACCESS_KEY = _settings.AWS_SECRET_ACCESS_KEY
+# AWS_STORAGE_BUCKET_NAME = "sidorov.dev"
