@@ -32,6 +32,6 @@ class CommentView(LoginRequiredMixin, CreateView):
     http_method_names = ["post"]
 
     def get_success_url(self):
-        url = reverse_lazy("meta:blog:post", kwargs={"pk": self.kwargs["pk"]})
+        url = reverse_lazy("feedback:post", kwargs={"pk": self.kwargs["pk"]})
 
         return url
