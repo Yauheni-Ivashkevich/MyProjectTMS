@@ -1,7 +1,47 @@
 {% extends "base.html" %}
-<!--
-{{ information | safe }}
--->
+
+{% block title %}Feedback on the projects of Eugene Ivashkevich{% endblock %}
+
+{% block header %}Feedback{% endblock %}
+
+{% block main %}
+<br><br>
+
+    <article>
+        <h2>{{object.title}}</h2>
+        <p>{{object.content}}</p>
+        {% for photo in object.photos.all() %}
+            <a href="{{ photo.original.url }}">
+                <img src="{{ photo.original.url }}"
+                     alt="{{ photo.pk }}"
+                     style="max-width:200px; height: auto">
+            </a>
+        {% endfor %}
+    </article>
+
+    <article>
+        <h3>Comments</h3>
+        {% if not object.comments.count() %}
+            <p>No one commented this</p>
+        {% endif %}
+        {% for comment in object.comments.all() %}
+             <section>
+                <p><i>{{ comment.message }}</i></p>
+                <p>&mdash; {{ comment.author.profile.name }}</p>
+            </section>
+        {% endfor %}
+        {% if not user.is_authenticated %}
+            <p><a href="{{ url('onboarding:index') }}">Sign in</a> to leave a comment.</p>
+        {% else %}
+            <form action="{{ url('feedback:comment', kwargs={'pk': object.pk}) }}" method="post">
+                {{ form.as_p() }}
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                <button type="submit">Comment</button>
+            </form>
+        {% endif %}
+    </article>
+
+{% endblock %}
 
 {% block title %}{{ object.title }} — read the post{% endblock %}
 {% block header %}{{ object.title }}{% endblock %}

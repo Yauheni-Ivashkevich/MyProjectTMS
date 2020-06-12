@@ -1,36 +1,16 @@
 {% extends "base.html" %}
 
-<!--
-{{ information | safe }}
--->
 {% block title %}Feedback on the projects of Eugene Ivashkevich{% endblock %}
+
 {% block header %}Feedback{% endblock %}
+
 {% block main %}
-{% for post in object_list %}
-<br/><div class="nes-container is-rounded">
-    <a href="{{ post.get_absolute_url() }}"> <h2>{{ post.title }}</h2></a><br/>
-    <p>{{ post.preview }}</p>
-</div><br/>
-{% endfor %}
-<br/><br/>
-<h2>What do you think about the projects implemented by Eugene Ivashekvich? </br>
-    What would you suggest for the further development of the Vileika region?</h2><br/>
-<form class="form">
 
-    <div  class="form-group">
-        <label>Name</label>
-        <input type="text" class="form-control" placeholder="">
-    </div>
-    <div class="form-group">
-        <label>E-mail</label>
-        <input type="text" class="form-control" placeholder="">
-    </div>
-    <div class="form-group">
-        <textarea id="textarea_field" class="form-control" placeholder="...Text something!"></textarea>
-    </div>
-
-    <button class="btn btn-primary"">Send</button>
-</form>
-
+    {% for post in object_list %}
+        <article>
+            <h3>{{ post.title }}</h3>
+            <p>{{ (post.content or '')|truncate(200, end='') }} <a href="{{ post.get_absolute_url() }}">...</a></p>
+        </article>
+    {% endfor %}
 
 {% endblock %}

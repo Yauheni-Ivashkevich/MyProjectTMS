@@ -31,6 +31,7 @@ INSTALLED_APPS_ORDERED = {
     40: "django.contrib.messages",
     50: "django.contrib.staticfiles",
     60: "django.contrib.sites",
+    70: "storages",
     # --- my apps ---
     1000: "apps.index",
     2000: "apps.resume",
@@ -135,8 +136,8 @@ STATIC_ROOT = (
 )  # куда соберется вся статика после команды collectstatic - папка создается.
 # в джанге куча статики в разных местах и разных приложениях
 
-if not DEBUG:
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# if not DEBUG:
+#     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 if not DEBUG:
     import sentry_sdk
@@ -162,11 +163,11 @@ LOGIN_REDIRECT_URL = reverse_lazy("onboarding:me")
 
 SITE_ID = _settings.SITE_ID
 
-# AWS_ACCESS_KEY_ID = _settings.AWS_ACCESS_KEY_ID
-# AWS_DEFAULT_ACL = "public-read"
-# AWS_LOCATION = _settings.AWS_LOCATION
-# AWS_QUERYSTRING_AUTH = False
-# AWS_S3_ADDRESSING_STYLE = "path"
-# AWS_S3_REGION_NAME = _settings.AWS_S3_REGION_NAME
-# AWS_SECRET_ACCESS_KEY = _settings.AWS_SECRET_ACCESS_KEY
-# AWS_STORAGE_BUCKET_NAME = "sidorov.dev"
+AWS_ACCESS_KEY_ID = _settings.AWS_ACCESS_KEY_ID
+AWS_DEFAULT_ACL = "public-read"
+AWS_LOCATION = _settings.AWS_LOCATION
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_ADDRESSING_STYLE = "path"
+AWS_S3_REGION_NAME = _settings.AWS_S3_REGION_NAME
+AWS_SECRET_ACCESS_KEY = _settings.AWS_SECRET_ACCESS_KEY
+AWS_STORAGE_BUCKET_NAME = "sidorov.dev"
