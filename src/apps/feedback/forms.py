@@ -8,7 +8,7 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         widgets = {
-            a(Comment.author): forms.HiddenInput,
-            a(Comment.post): forms.HiddenInput,
+            "author": forms.HiddenInput,
+            "Comment.post": forms.HiddenInput,
         }
-        fields = [a(_f) for _f in (Comment.author, Comment.message, Comment.post,)]
+        fields = ["author", "message", "post"]

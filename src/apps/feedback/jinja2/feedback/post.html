@@ -5,7 +5,6 @@
 {% block header %}Feedback{% endblock %}
 
 {% block main %}
-<br><br>
 
     <article>
         <h2>{{object.title}}</h2>
@@ -41,13 +40,4 @@
         {% endif %}
     </article>
 
-{% endblock %}
-
-{% block title %}{{ object.title }} — read the post{% endblock %}
-{% block header %}{{ object.title }}{% endblock %}
-{% block main %}
-    <br/><p>{{ object.preview }}</p><br/>
-    <p>{{ object.content | safe }}</p><br/>
-    <p>Author: {{ object.author }}</p>
-    <a href="{{ url('feedback:all_posts') }}">Jump to all posts</a>
 {% endblock %}
