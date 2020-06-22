@@ -13,6 +13,7 @@ ipython = "*"
 isort = "*"
 line-profiler = "*"
 pudb = "*"
+pillow = "*"
 
 [packages]
 celery = {extras = ["redis"],version = "*"}
@@ -32,3 +33,4 @@ sentry-sdk = "*"
 requests = "*"
 boto3 = "*"
 django-storages = "*"
+

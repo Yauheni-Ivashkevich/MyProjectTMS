@@ -30,6 +30,7 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("o/", include("apps.onboarding.urls")),
     path("feedback/", include("apps.feedback.urls")),
+    path("api/", include("apps.api.urls")),
     # path('projects/', view_projects, name="projects"),
     # path('pic.jpg', view_jpg),
     # path('styles1.css', view_styles),

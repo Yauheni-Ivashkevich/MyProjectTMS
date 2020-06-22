@@ -32,12 +32,17 @@ INSTALLED_APPS_ORDERED = {
     50: "django.contrib.staticfiles",
     60: "django.contrib.sites",
     70: "storages",
+# --- 3dp applications ---
+    100: "rest_framework",
+    101: "rest_framework.authtoken",
+    200: "drf_yasg",
     # --- my apps ---
     1000: "apps.index",
     2000: "apps.resume",
     3000: "apps.projects",
     4000: "apps.onboarding.apps.OnboardingConfig",
     5000: "apps.feedback",
+    6000: "apps.api.apps.ApiConfig",
 }
 if PROFILING:
     INSTALLED_APPS_ORDERED[49] = "silk"
