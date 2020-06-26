@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reminder</title>
+</head>
+<body>
+<h3>Hi, {{ recipient.profile.name }}!</h3>
+<p>Here is a gentle reminder about the event:</p>
+<h1>{{ reminder.title }}</h1>
+<p>Location: {{ reminder.location }}</p>
+<p style="border: 1px darkgray dotted">{{ reminder.description }}</p>
+{% if reminder.participants.count() %}
+    <h3>Participants:</h3>
+    <ul>
+        {% for party in reminder.participants.all() %}
+            <li>{{ party.profile.name }} <a href="mailto:{{ party.email }}">&lt;{{ party.email }}&gt;</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+</body>
+</html>

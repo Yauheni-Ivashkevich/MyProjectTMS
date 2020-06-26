@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Resume of Eugene Ivashkevich{% endblock %}
+
+{% block header %}Resume{% endblock %}
+
+{% block main %}
+<br>
+<article class="bg-content">
+    <h2> {{ resume_list.first().title | safe }}</h2>
+    <h5>{{ resume_list.first().description | safe  }}</h5><br>
+    <h4>Organizations:</h4>
+{% for organization in object_list %}
+        {{ organization.name | safe }}
+        {% if organization.position  %}
+        {{ organization.position | safe}}
+        {% endif %}
+
+    <p>From {{ organization.started_at }} till {{ organization.finished_at }}</p>
+        {% if organization.achievements_text %}
+        {{ organization.achievements_text }}
+        {% endif %}
+
+        {% if organization.link  %}
+    <a href="{{ organization.link }}"> </a>
+        {% endif %}
+    {% if organization.responsibilities.count() %}
+        <h5>Responsibilities:</h5>
+        <ul>
+        {% for resp in organization.responsibilities.all() %}
+            <li>{{ resp.summary | safe }}</li> <br>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endfor %}
+
+</article>
+
+{% endblock %}
+

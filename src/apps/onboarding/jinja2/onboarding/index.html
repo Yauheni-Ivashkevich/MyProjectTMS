@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Onboarding{% endblock %}
+
+{% block header %}Onboarding{% endblock %}
+
+{% block main %}
+
+    <article>
+        <h2>Actions</h2>
+
+        <section>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{{ url('onboarding:pwc') }}">Change Password</a></li>
+                    <li><a href="{{ url('onboarding:sign_out') }}">Sign Out</a></li>
+                {% else %}
+                    <li><a href="{{ url('onboarding:sign_in') }}">Sign In</a></li>
+                    <li><a href="{{ url('onboarding:sign_up') }}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+        </section>
+
+    </article>
+
+{% endblock %}

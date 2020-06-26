@@ -1,0 +1,16 @@
+Hi {{ recipient.profile.name }}!
+
+Here is a gentle reminder about the event {{ reminder.title }}.
+
+Location: {{ reminder.location }}
+
+---
+{{ reminder.description }}
+---
+
+{% if reminder.participants.count() %}
+Participants:
+{% for party in reminder.participants.all() %}
++ {{ party.profile.name }} <{{ party.email }}>
+{% endfor %}
+{% endif %}

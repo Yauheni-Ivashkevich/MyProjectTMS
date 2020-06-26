@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Projects of  Eugene Ivashkevich{% endblock %}
+
+{% block header %}Projects{% endblock %}
+
+{% block styles %}
+<link href="{{ static('css/project.css')}}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block main %}
+
+<article class="bg-content">
+    <h2>Below is a list with some of them.</h2><br>
+
+    <h2>Projects:</h2>
+
+    {% for project in projects %}
+    <div class="text">
+        <p>{{ project.link | safe }} </p>
+        <p>{{ project.description }}</p>
+
+        {% if project.gallery %}
+                <div>{{ project.gallery }}</div>
+            {% endif %}
+            <ul>
+                <h5><li><b>Start at: </b> {{ project.started_at }}</li>
+                    <li><b>Duration: </b> {{ project.duration }}</li></h5>>
+            </ul>
+            {% if project.donor %}
+                <br/>
+                <h3>Donor</h3>
+                <p>{{ project.donor }}</p>
+            {% endif %}
+    </div>
+    
+     {% endfor %}
+
+</article>
+{% endblock %}

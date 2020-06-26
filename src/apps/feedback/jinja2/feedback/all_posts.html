@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Feedback on the projects of Eugene Ivashkevich{% endblock %}
+
+{% block header %}Feedback{% endblock %}
+
+{% block main %}
+
+    {% for post in object_list %}
+        <article>
+            <h3>{{ post.title }}</h3>
+            <p>{{ (post.content or '')|truncate(200, end='') }} <a href="{{ post.get_absolute_url() }}">...</a></p>
+        </article>
+    {% endfor %}
+
+{% endblock %}

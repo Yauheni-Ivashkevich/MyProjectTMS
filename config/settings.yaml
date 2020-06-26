@@ -1,22 +1,73 @@
 default:
   ALLOWED_HOSTS: []
+  AWS_ACCESS_KEY_ID: ""
+  AWS_LOCATION: ""
+  AWS_S3_REGION_NAME: ""
+  AWS_SECRET_ACCESS_KEY: ""
+  CELERY_BEAT_INVITATION: -1
+  CELERY_BROKER_URL: ""
   DATABASE_URL: ""
-  DEBUG: true
+  EMAIL_FROM: ""
+  EMAIL_HOST: ""
+  EMAIL_HOST_PASSWORD: ""
+  EMAIL_HOST_USER: ""
+  EMAIL_PORT: 0
+  EMAIL_USE_SSL: 0
+  EMAIL_USE_TLS: 0
+  LOCAL_TIME_ZONE: "UTC"
+  DEBUG: false
+  PROFILING: true
   SECRET_KEY: ""
   SENTRY_DSN: ""
+  SITE_ID: 0
 
 development:
+  AWS_LOCATION: "development"
+  AWS_S3_REGION_NAME: "us-east-1"
+  CELERY_BEAT_INVITATION: 30
   DEBUG: true
+  PROFILING: 0
+  SECRET_KEY: "1"
+  SITE_ID: 1
+
+docker:
+  AWS_LOCATION: "development"
+  AWS_S3_REGION_NAME: "us-east-1"
+  CELERY_BEAT_INVITATION: 30
+  CELERY_BROKER_URL: "redis:redis://"
+  DATABASE_URL: "postgresql://eugene:1211@localhost:5432/tms"
+  MODE_CACHING: 0
+  MODE_DEBUG: 0
+  MODE_PROFILING: 0
+  SECRET_KEY: "1"
+  SITE_ID: 1
+  TIME_ZONE: "Europe/Minsk"
 
 heroku:
   ALLOWED_HOSTS:
     - .gogenjack.herokuapp.com
-    - .sidorov.dev
     - 127.0.0.1
     - localhost
+  AWS_LOCATION: "development"
+  AWS_S3_REGION_NAME: "us-east-1"
+  CELERY_BEAT_INVITATION: 90
   DEBUG: false
+  PROFILING: 0
+
+
+test:
+  EMAIL_FROM: "test@test.name"
+  MDEBUG: true
+  PROFILING: 0
+  SECRET_KEY: "1"
+  SITE_ID: 1
+  TIME_ZONE: "UTC"
+
 
 travis:
   DATABASE_URL: "postgresql://postgres@localhost:5432/sd"
   DEBUG: true
+  PROFILING: 0
   SECRET_KEY: "1"
+  SITE_ID: 1
+  TIME_ZONE: "UTC"

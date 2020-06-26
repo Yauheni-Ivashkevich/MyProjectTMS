@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Eugene Ivashkevich personal website{% endblock %}
+{% block header %}{{ name | safe }}{% endblock %}
+{% block styles %}
+<link href="{{ static ('css/index.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block main %}
+<article class="index-main">
+    <div class="image">
+    <img alt="myfoto" src="{{ static ('index/pic.jpg') }}"/>
+    </div>
+    <div class="text">
+        {{ greeting | safe }}
+    </div>
+</article>
+{% endblock %}
