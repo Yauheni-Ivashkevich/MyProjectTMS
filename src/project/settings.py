@@ -32,7 +32,7 @@ INSTALLED_APPS_ORDERED = {
     50: "django.contrib.staticfiles",
     60: "django.contrib.sites",
     70: "storages",
-# --- 3dp applications ---
+    # --- 3dp applications ---
     100: "rest_framework",
     101: "rest_framework.authtoken",
     200: "drf_yasg",
